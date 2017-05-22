@@ -5,7 +5,7 @@ var path = require('path');
     
     module.exports = {
         entry: {
-            bundle: './components/base.jsx'
+            bundle: './content/components/base.jsx'
         },
         output: {
             path: path.join(__dirname, '.public'),
@@ -34,28 +34,12 @@ var path = require('path');
                         }
                 },
                 { 
-                    test: /\.png$/, 
-                    loader: "url-loader?limit=100000" 
+                    test: /\.jpg$|.webp$/, 
+                    loader: "url-loader" 
                 },
                 { 
-                    test: /\.jpg$/, 
-                    loader: "file-loader" 
-                },
-                {
-                    test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, 
-                    loader: 'url-loader?limit=10000&mimetype=application/font-woff'
-                },
-                {
-                    test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
-                    loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
-                },
-                {
-                    test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
-                    loader: 'file-loader'
-                },
-                {
-                    test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
-                    loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
+                    test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                    loader: 'url-loader'
                 }
             ]
         }
