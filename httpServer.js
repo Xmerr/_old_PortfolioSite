@@ -44,6 +44,4 @@ module.export = (() => {
             });
         })(name);
     }
-    
-    console.log(`Website is running on port: ${process.env.port}`);
 })();
