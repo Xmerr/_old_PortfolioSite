@@ -14,7 +14,7 @@ class Base extends React.Component{
             });
         }, 5000);
         
-        global.jarallax(document.querySelectorAll('.MainArea>div'), {
+        global.jarallax(document.querySelectorAll('.MainArea>div, .Story div'), {
            speed: 0.2 
         });
     }
@@ -30,72 +30,94 @@ class Base extends React.Component{
                     </span>
                 </div>
                 
-                <div className="FirstPrograms"
-                    ref="FirstPrograms">
-                    <p>
-                        My career began in middleschool when I played around with bat files.
-                        My first application was a small little y/n program that looked like a scene from "The Matrix".
-                        
-                        <hr />
-                        
-                        My passion for programming continued into my highschool years when I created an application that worked simular to access.
-                        The program had a backend application (written in java) on a remote server than was running MySQL.
-                        Anyone who had the client application (also written in java) could access the server data through very unsecure means and create tables/add data/view data/update data.
-                    </p>
-                </div>
+                <div className="Story">
+                    <div className="FirstPrograms"
+                        ref="FirstPrograms">
+                        <div>
+                            <div>
+                                <p>
+                                    My career began in middleschool when I played around with bat files.
+                                    My first application was a small little y/n program that looked like a scene from "The Matrix".
+                                    
+                                    <hr />
+                                    
+                                    My passion for programming continued into my highschool years when I created an application that worked simular to access.
+                                    The program had a backend application (written in java) on a remote server than was running MySQL.
+                                    Anyone who had the client application (also written in java) could access the server data through very unsecure means and create tables/add data/view data/update data.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 
-                <div className="Education" ref="Education">
-                    <p>
-                        I wasn't aware of how computers software actually worked until my first college level programming class, Visual Basic.
-                        After that class I began to seek programming knowledge anyway I could - I even built a text based game using C++.
-                        
-                        After graduating highscool with my Associate of General Studies I moved to UNA to complete two Bachelor degrees in Computer Information Systems and Project Management.
-                        
-                        During my education I obtained two Microsoft Office certifates and became a Certified Associate of Program Management (CAPM) from the Project Management Institute and graduated with honors.
-                    </p>
-                </div>
+                    <div className="Education" ref="Education">
+                        <div>
+                            <div>
+                                <p>
+                                    I wasn't aware of how computers software actually worked until my first college level programming class, Visual Basic.
+                                    After that class I began to seek programming knowledge anyway I could - I even built a text based game using C++.
+                                    
+                                    After graduating highscool with my Associate of General Studies I moved to UNA to complete two Bachelor degrees in Computer Information Systems and Project Management.
+                                    
+                                    During my education I obtained two Microsoft Office certifates and became a Certified Associate of Program Management (CAPM) from the Project Management Institute and graduated with honors.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 
-                <div className="IT" ref="IT">
-                    <p>
-                        After college I started my career at Simulation Techonologies as the corporate IT guy.
-                        
-                        I worked on everything you would expect and more from a company of it's size:
-                        upgrading access databases to SQL, moving an asp classic website to asp.net, rebuilding a windows server, rewiring the network, etc.
-                        
-                        It wasn't long until I was moved into a development position.
-                    </p>
-                </div>
+                    <div className="IT" ref="IT">
+                        <div>
+                            <div>
+                                <p>
+                                    After college I started my career at Simulation Techonologies as the corporate IT guy.
+                                    
+                                    I worked on everything you would expect and more from a company of it's size:
+                                    upgrading access databases to SQL, moving an asp classic website to asp.net, rebuilding a windows server, rewiring the network, etc.
+                                    
+                                    It wasn't long until I was moved into a development position.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 
-                <div className="Development" ref="Development">
-                    <p>
-                        I was moved onto a government contract and was put into a group with one other developer.
-                        We had limited control over what we could do as every new bit of technology had to be approved by the government.
-                        
-                        6 months later the original developer was moved to a new project and I was approved to use aspnet.
-                        
-                        I started remaking the application by using asp.net MVC in C# with Razor.
-                        
-                        <hr />
-                        
-                        Two years later the original developer rejoined my group and I was asked to hire one additional developer.
-                        I was also given the title of "Team Lead".
-                    </p>
-                </div>
+                    <div className="Development" ref="Development">
+                        <div>
+                            <div>
+                                <p>
+                                    I was moved onto a government contract and was put into a group with one other developer.
+                                    We had limited control over what we could do as every new bit of technology had to be approved by the government.
+                                    
+                                    6 months later the original developer was moved to a new project and I was approved to use aspnet.
+                                    
+                                    I started remaking the application by using asp.net MVC in C# with Razor.
+                                    
+                                    <hr />
+                                    
+                                    Two years later the original developer rejoined my group and I was asked to hire one additional developer.
+                                    I was also given the title of "Team Lead".
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 
-                <div className="Progress" ref="Progress">
-                    <p>
-                        Dispite the government's slow adaption of new technologies I have not slowed down.
-                        My personal projects use Nodejs, such as this website. 
-                        
-                        I have moved my group into using React, Redux, Websockets, and Webpack to keep our software current.
-                        
-                        <hr />
-                        
-                        Today most of my work outside SimTech is spent making a bot for a chat application called "Discord".
-                        
-                        The bot listens for commands and interprets the intent of the command using Api.ai.
-                        Once completed the bot will have the knowledge of all dnd 5e official books as well as some vetted homebrew rules.
-                    </p>
+                    <div className="Progress" ref="Progress">
+                        <div>
+                            <div>
+                                <p>
+                                    Dispite the government's slow adaption of new technologies I have not slowed down.
+                                    My personal projects use Nodejs, such as this website. 
+                                    
+                                    I have moved my group into using React, Redux, Websockets, and Webpack to keep our software current.
+                                    
+                                    <hr />
+                                    
+                                    Today most of my work outside SimTech is spent making a bot for a chat application called "Discord".
+                                    
+                                    The bot listens for commands and interprets the intent of the command using Api.ai.
+                                    Once completed the bot will have the knowledge of all dnd 5e official books as well as some vetted homebrew rules.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div className="resume"

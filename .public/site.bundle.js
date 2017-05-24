@@ -10311,7 +10311,7 @@ var Base = function (_React$Component) {
                 });
             }, 5000);
 
-            global.jarallax(document.querySelectorAll('.MainArea>div'), {
+            global.jarallax(document.querySelectorAll('.MainArea>div, .Story div'), {
                 speed: 0.2
             });
         }
@@ -10334,54 +10334,98 @@ var Base = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     'div',
-                    { className: 'FirstPrograms',
-                        ref: 'FirstPrograms' },
+                    { className: 'Story' },
                     _react2.default.createElement(
-                        'p',
-                        null,
-                        'My career began in middleschool when I played around with bat files. My first application was a small little y/n program that looked like a scene from "The Matrix".',
-                        _react2.default.createElement('hr', null),
-                        'My passion for programming continued into my highschool years when I created an application that worked simular to access. The program had a backend application (written in java) on a remote server than was running MySQL. Anyone who had the client application (also written in java) could access the server data through very unsecure means and create tables/add data/view data/update data.'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'Education', ref: 'Education' },
+                        'div',
+                        { className: 'FirstPrograms',
+                            ref: 'FirstPrograms' },
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'My career began in middleschool when I played around with bat files. My first application was a small little y/n program that looked like a scene from "The Matrix".',
+                                    _react2.default.createElement('hr', null),
+                                    'My passion for programming continued into my highschool years when I created an application that worked simular to access. The program had a backend application (written in java) on a remote server than was running MySQL. Anyone who had the client application (also written in java) could access the server data through very unsecure means and create tables/add data/view data/update data.'
+                                )
+                            )
+                        )
+                    ),
                     _react2.default.createElement(
-                        'p',
-                        null,
-                        'I wasn\'t aware of how computers software actually worked until my first college level programming class, Visual Basic. After that class I began to seek programming knowledge anyway I could - I even built a text based game using C++. After graduating highscool with my Associate of General Studies I moved to UNA to complete two Bachelor degrees in Computer Information Systems and Project Management. During my education I obtained two Microsoft Office certifates and became a Certified Associate of Program Management (CAPM) from the Project Management Institute and graduated with honors.'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'IT', ref: 'IT' },
+                        'div',
+                        { className: 'Education', ref: 'Education' },
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'I wasn\'t aware of how computers software actually worked until my first college level programming class, Visual Basic. After that class I began to seek programming knowledge anyway I could - I even built a text based game using C++. After graduating highscool with my Associate of General Studies I moved to UNA to complete two Bachelor degrees in Computer Information Systems and Project Management. During my education I obtained two Microsoft Office certifates and became a Certified Associate of Program Management (CAPM) from the Project Management Institute and graduated with honors.'
+                                )
+                            )
+                        )
+                    ),
                     _react2.default.createElement(
-                        'p',
-                        null,
-                        'After college I started my career at Simulation Techonologies as the corporate IT guy. I worked on everything you would expect and more from a company of it\'s size: upgrading access databases to SQL, moving an asp classic website to asp.net, rebuilding a windows server, rewiring the network, etc. It wasn\'t long until I was moved into a development position.'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'Development', ref: 'Development' },
+                        'div',
+                        { className: 'IT', ref: 'IT' },
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'After college I started my career at Simulation Techonologies as the corporate IT guy. I worked on everything you would expect and more from a company of it\'s size: upgrading access databases to SQL, moving an asp classic website to asp.net, rebuilding a windows server, rewiring the network, etc. It wasn\'t long until I was moved into a development position.'
+                                )
+                            )
+                        )
+                    ),
                     _react2.default.createElement(
-                        'p',
-                        null,
-                        'I was moved onto a government contract and was put into a group with one other developer. We had limited control over what we could do as every new bit of technology had to be approved by the government. 6 months later the original developer was moved to a new project and I was approved to use aspnet. I started remaking the application by using asp.net MVC in C# with Razor.',
-                        _react2.default.createElement('hr', null),
-                        'Two years later the original developer rejoined my group and I was asked to hire one additional developer. I was also given the title of "Team Lead".'
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'Progress', ref: 'Progress' },
+                        'div',
+                        { className: 'Development', ref: 'Development' },
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'I was moved onto a government contract and was put into a group with one other developer. We had limited control over what we could do as every new bit of technology had to be approved by the government. 6 months later the original developer was moved to a new project and I was approved to use aspnet. I started remaking the application by using asp.net MVC in C# with Razor.',
+                                    _react2.default.createElement('hr', null),
+                                    'Two years later the original developer rejoined my group and I was asked to hire one additional developer. I was also given the title of "Team Lead".'
+                                )
+                            )
+                        )
+                    ),
                     _react2.default.createElement(
-                        'p',
-                        null,
-                        'Dispite the government\'s slow adaption of new technologies I have not slowed down. My personal projects use Nodejs, such as this website. I have moved my group into using React, Redux, Websockets, and Webpack to keep our software current.',
-                        _react2.default.createElement('hr', null),
-                        'Today most of my work outside SimTech is spent making a bot for a chat application called "Discord". The bot listens for commands and interprets the intent of the command using Api.ai. Once completed the bot will have the knowledge of all dnd 5e official books as well as some vetted homebrew rules.'
+                        'div',
+                        { className: 'Progress', ref: 'Progress' },
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'Dispite the government\'s slow adaption of new technologies I have not slowed down. My personal projects use Nodejs, such as this website. I have moved my group into using React, Redux, Websockets, and Webpack to keep our software current.',
+                                    _react2.default.createElement('hr', null),
+                                    'Today most of my work outside SimTech is spent making a bot for a chat application called "Discord". The bot listens for commands and interprets the intent of the command using Api.ai. Once completed the bot will have the knowledge of all dnd 5e official books as well as some vetted homebrew rules.'
+                                )
+                            )
+                        )
                     )
                 ),
                 _react2.default.createElement(
@@ -24043,7 +24087,7 @@ exports = module.exports = __webpack_require__(92)(undefined);
 
 
 // module
-exports.push([module.i, "@media all and (min-width: 1025px) and (max-width: 1399px) {\n  html {\n    font-size: 16px; } }\n\n@media all and (min-width: 1400px) {\n  html {\n    font-size: 18px; } }\n\n@font-face {\n  font-family: Suess;\n  src: url(" + __webpack_require__(201) + "); }\n\nbody {\n  margin: 0;\n  padding: 0; }\n  body * {\n    font-size: 15px; }\n\n.MainArea {\n  background-color: black; }\n  .MainArea > div {\n    width: 100%;\n    height: 100vh;\n    background-repeat: no-repeat;\n    background-size: cover;\n    background-position: center; }\n    .MainArea > div p {\n      background-color: rgba(255, 255, 255, 0.8);\n      color: #000000;\n      text-shadow: 0px 0px 2px #ffffff;\n      width: 60%;\n      margin-left: 20%;\n      margin-top: 0;\n      font-size: 1.5rem; }\n    .MainArea > div.splash {\n      position: relative;\n      background-image: url(" + __webpack_require__(207) + "); }\n      .MainArea > div.splash .quote {\n        text-shadow: -6px 7px 7px #073d3e;\n        background-color: transparent;\n        position: absolute;\n        bottom: 50%;\n        left: 50%;\n        width: 30%;\n        font-size: 2.5rem;\n        text-align: right;\n        font-family: Suess; }\n    .MainArea > div.FirstPrograms {\n      background-image: url(" + __webpack_require__(206) + "); }\n    .MainArea > div.Education {\n      background-image: url(" + __webpack_require__(205) + "); }\n    .MainArea > div.IT {\n      background-image: url(" + __webpack_require__(202) + "); }\n    .MainArea > div.Development {\n      background-image: url(" + __webpack_require__(203) + "); }\n    .MainArea > div.Progress {\n      background-image: url(" + __webpack_require__(204) + "); }\n    .MainArea > div.resume {\n      font-family: Calibri, Candara, Segoe, \"Segoe UI\", Optima, Arial, sans-serif; }\n", ""]);
+exports.push([module.i, "@media all and (min-width: 1025px) and (max-width: 1399px) {\n  html {\n    font-size: 16px; } }\n\n@media all and (min-width: 1400px) {\n  html {\n    font-size: 18px; } }\n\n@font-face {\n  font-family: Suess;\n  src: url(" + __webpack_require__(201) + "); }\n\nbody {\n  margin: 0;\n  padding: 0; }\n  body * {\n    font-size: 15px; }\n\n.MainArea {\n  background-color: black; }\n  .MainArea > div {\n    width: 100%;\n    height: 100vh;\n    background-repeat: no-repeat;\n    background-size: cover;\n    background-position: center; }\n    .MainArea > div.splash {\n      position: relative;\n      background-image: url(" + __webpack_require__(207) + "); }\n      .MainArea > div.splash .quote {\n        text-shadow: -6px 7px 7px #073d3e;\n        background-color: transparent;\n        position: absolute;\n        bottom: 50%;\n        left: 50%;\n        width: 30%;\n        font-size: 2.5rem;\n        text-align: right;\n        font-family: Suess; }\n    .MainArea > div.Story {\n      position: relative;\n      height: initial; }\n      .MainArea > div.Story div {\n        background-repeat: no-repeat;\n        background-size: cover;\n        background-position: center; }\n      .MainArea > div.Story > div {\n        display: table;\n        position: relative;\n        height: 100vh;\n        width: 100%; }\n        .MainArea > div.Story > div > div {\n          display: table-cell;\n          vertical-align: middle; }\n          .MainArea > div.Story > div > div > div {\n            margin-left: auto;\n            margin-right: auto;\n            width: 40%; }\n            .MainArea > div.Story > div > div > div p {\n              background-color: rgba(255, 255, 255, 0.8);\n              color: #000000;\n              font-size: 1.5rem;\n              text-shadow: 0px 0px 2px #ffffff; }\n      .MainArea > div.Story .FirstPrograms {\n        background-image: url(" + __webpack_require__(206) + "); }\n      .MainArea > div.Story .Education {\n        background-image: url(" + __webpack_require__(205) + "); }\n      .MainArea > div.Story .IT {\n        background-image: url(" + __webpack_require__(202) + "); }\n      .MainArea > div.Story .Development {\n        background-image: url(" + __webpack_require__(203) + "); }\n      .MainArea > div.Story .Progress {\n        background-image: url(" + __webpack_require__(204) + "); }\n    .MainArea > div.resume {\n      font-family: Calibri, Candara, Segoe, \"Segoe UI\", Optima, Arial, sans-serif; }\n", ""]);
 
 // exports
 
