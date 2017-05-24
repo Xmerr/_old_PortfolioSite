@@ -9,7 +9,7 @@ var scroll = require('scroll-into-view');
 class Base extends React.Component{
     componentDidMount() {
         setTimeout(() => {
-            scroll(this.refs.resume, {
+            scroll(this.refs.FirstPrograms, {
                time: 1000
             });
         }, 5000);
@@ -44,18 +44,18 @@ class Base extends React.Component{
                     </p>
                 </div>
                 
-                <div ref="Education">
+                <div className="Education" ref="Education">
                     <p>
                         I wasn't aware of how computers software actually worked until my first college level programming class, Visual Basic.
                         After that class I began to seek programming knowledge anyway I could - I even built a text based game using C++.
                         
-                        After graduating highscool with my Associate of General Studies I moved to UNA to complete my Bachelors in Computer Information Systems and Project Management.
+                        After graduating highscool with my Associate of General Studies I moved to UNA to complete two Bachelor degrees in Computer Information Systems and Project Management.
                         
-                        During my education I achieved two Microsoft Office certifates and became a Certified Associate of Program Management (CAPM) from the Project Management Institute and graduated with honors.
+                        During my education I obtained two Microsoft Office certifates and became a Certified Associate of Program Management (CAPM) from the Project Management Institute and graduated with honors.
                     </p>
                 </div>
                 
-                <div ref="IT">
+                <div className="IT" ref="IT">
                     <p>
                         After college I started my career at Simulation Techonologies as the corporate IT guy.
                         
@@ -66,14 +66,14 @@ class Base extends React.Component{
                     </p>
                 </div>
                 
-                <div ref="Development">
+                <div className="Development" ref="Development">
                     <p>
                         I was moved onto a government contract and was put into a group with one other developer.
                         We had limited control over what we could do as every new bit of technology had to be approved by the government.
                         
                         6 months later the original developer was moved to a new project and I was approved to use aspnet.
                         
-                        I started remaking the application by using asp.net MVC with C# and Razor.
+                        I started remaking the application by using asp.net MVC in C# with Razor.
                         
                         <hr />
                         
@@ -82,7 +82,7 @@ class Base extends React.Component{
                     </p>
                 </div>
                 
-                <div ref="Progress">
+                <div className="Progress" ref="Progress">
                     <p>
                         Dispite the government's slow adaption of new technologies I have not slowed down.
                         My personal projects use Nodejs, such as this website. 

@@ -5,11 +5,11 @@ var path = require('path');
     
     module.exports = {
         entry: {
-            bundle: './content/components/base.jsx'
+            site: './content/components/base.jsx'
         },
         output: {
             path: path.join(__dirname, '.public'),
-            filename: '[name].js'
+            filename: '[name].bundle.js'
         },
         module: {
             loaders: [
