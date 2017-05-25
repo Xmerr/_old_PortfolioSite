@@ -10305,15 +10305,80 @@ var Base = function (_React$Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
-            setTimeout(function () {
-                scroll(_this2.refs.FirstPrograms, {
-                    time: 1000
-                });
-            }, 5000);
+            this.areas = {
+                'Home': {
+                    main: this.refs.Splash
+                },
+                'My Story': {
+                    main: this.refs.Story,
+                    1: this.refs.FirstPrograms,
+                    2: this.refs.Education,
+                    3: this.refs.IT,
+                    4: this.refs.Development,
+                    5: this.refs.Progress
+                },
+                'Resume': {
+                    main: this.refs.Resume
+                }
+            };
+
+            document.onkeydown = function () {
+                return _this2.keypress();
+            };
 
             global.jarallax(document.querySelectorAll('.MainArea>div, .Story div'), {
                 speed: 0.2
             });
+        }
+    }, {
+        key: 'keypress',
+        value: function keypress(e) {
+            var _this3 = this;
+
+            if (this.processingScroll) {
+                return;
+            }
+
+            this.processingScroll = true;
+
+            e = e || window.event;
+
+            var elem = function () {
+                var elems = {
+                    previous: null,
+                    next: null
+                };
+                var regions = Object.keys(_this3.areas);
+
+                for (var i = 0; i < regions.length; i++) {
+                    var sections = Object.keys(_this3.areas[regions[i]]);
+                    for (var j = 0; j < sections.length; j++) {
+                        if (!elems.previous && _this3.areas[regions[i]][sections[j]].getBoundingClientRect().top < -50 || _this3.areas[regions[i]][sections[j]].getBoundingClientRect().top < -50 && _this3.areas[regions[i]][sections[j]].getBoundingClientRect().top > elems.previous.getBoundingClientRect().top) {
+                            elems.previous = _this3.areas[regions[i]][sections[j]];
+                        } else if (!elems.next && _this3.areas[regions[i]][sections[j]].getBoundingClientRect().top > 50 || elems.next && _this3.areas[regions[i]][sections[j]].getBoundingClientRect().top > 50 && _this3.areas[regions[i]][sections[j]].getBoundingClientRect().top < elems.next.getBoundingClientRect().top) {
+                            elems.next = _this3.areas[regions[i]][sections[j]];
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+
+                return elems;
+            }();
+
+            if (e.keyCode === 37 || e.keyCode === 38) {
+                e.preventDefault();
+                scroll(elem.previous, {
+                    time: 1000
+                });
+            } else if (e.keyCode === 39 || e.keyCode === 40) {
+                e.preventDefault();
+                scroll(elem.next, {
+                    time: 1000
+                });
+            }
+
+            this.processingScroll = false;
         }
     }, {
         key: 'render',
@@ -10323,7 +10388,8 @@ var Base = function (_React$Component) {
                 { className: 'MainArea' },
                 _react2.default.createElement(
                     'div',
-                    { className: 'splash' },
+                    { className: 'splash',
+                        ref: 'Splash' },
                     _react2.default.createElement(
                         'span',
                         { className: 'quote' },
@@ -10334,7 +10400,8 @@ var Base = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     'div',
-                    { className: 'Story' },
+                    { className: 'Story',
+                        ref: 'Story' },
                     _react2.default.createElement(
                         'div',
                         { className: 'FirstPrograms',
@@ -10430,8 +10497,8 @@ var Base = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     'div',
-                    { className: 'resume',
-                        ref: 'resume' },
+                    { className: 'Resume',
+                        ref: 'Resume' },
                     _react2.default.createElement(
                         'h1',
                         null,
@@ -24087,7 +24154,7 @@ exports = module.exports = __webpack_require__(92)(undefined);
 
 
 // module
-exports.push([module.i, "@media all and (min-width: 1025px) and (max-width: 1399px) {\n  html {\n    font-size: 16px; } }\n\n@media all and (min-width: 1400px) {\n  html {\n    font-size: 18px; } }\n\n@font-face {\n  font-family: Suess;\n  src: url(" + __webpack_require__(201) + "); }\n\nbody {\n  margin: 0;\n  padding: 0; }\n  body * {\n    font-size: 15px; }\n\n.MainArea {\n  background-color: black; }\n  .MainArea > div {\n    width: 100%;\n    height: 100vh;\n    background-repeat: no-repeat;\n    background-size: cover;\n    background-position: center; }\n    .MainArea > div.splash {\n      position: relative;\n      background-image: url(" + __webpack_require__(207) + "); }\n      .MainArea > div.splash .quote {\n        text-shadow: -6px 7px 7px #073d3e;\n        background-color: transparent;\n        position: absolute;\n        bottom: 50%;\n        left: 50%;\n        width: 30%;\n        font-size: 2.5rem;\n        text-align: right;\n        font-family: Suess; }\n    .MainArea > div.Story {\n      position: relative;\n      height: initial; }\n      .MainArea > div.Story div {\n        background-repeat: no-repeat;\n        background-size: cover;\n        background-position: center; }\n      .MainArea > div.Story > div {\n        display: table;\n        position: relative;\n        height: 100vh;\n        width: 100%; }\n        .MainArea > div.Story > div > div {\n          display: table-cell;\n          vertical-align: middle; }\n          .MainArea > div.Story > div > div > div {\n            margin-left: auto;\n            margin-right: auto;\n            width: 40%; }\n            .MainArea > div.Story > div > div > div p {\n              background-color: rgba(255, 255, 255, 0.8);\n              color: #000000;\n              font-size: 1.5rem;\n              text-shadow: 0px 0px 2px #ffffff; }\n      .MainArea > div.Story .FirstPrograms {\n        background-image: url(" + __webpack_require__(206) + "); }\n      .MainArea > div.Story .Education {\n        background-image: url(" + __webpack_require__(205) + "); }\n      .MainArea > div.Story .IT {\n        background-image: url(" + __webpack_require__(202) + "); }\n      .MainArea > div.Story .Development {\n        background-image: url(" + __webpack_require__(203) + "); }\n      .MainArea > div.Story .Progress {\n        background-image: url(" + __webpack_require__(204) + "); }\n    .MainArea > div.resume {\n      font-family: Calibri, Candara, Segoe, \"Segoe UI\", Optima, Arial, sans-serif; }\n", ""]);
+exports.push([module.i, "@media all and (min-width: 1025px) and (max-width: 1399px) {\n  html {\n    font-size: 16px; } }\n\n@media all and (min-width: 1400px) {\n  html {\n    font-size: 18px; } }\n\n@font-face {\n  font-family: Suess;\n  src: url(" + __webpack_require__(201) + "); }\n\nbody {\n  margin: 0;\n  padding: 0; }\n  body * {\n    font-size: 15px; }\n\n.MainArea {\n  background-color: black; }\n  .MainArea > div {\n    width: 100%;\n    height: 100vh;\n    background-repeat: no-repeat;\n    background-size: cover;\n    background-position: center; }\n    .MainArea > div.splash {\n      position: relative;\n      background-image: url(" + __webpack_require__(207) + "); }\n      .MainArea > div.splash .quote {\n        text-shadow: -6px 7px 7px #073d3e;\n        background-color: transparent;\n        position: absolute;\n        bottom: 50%;\n        left: 50%;\n        width: 30%;\n        font-size: 2.5rem;\n        text-align: right;\n        font-family: Suess; }\n    .MainArea > div.Story {\n      position: relative;\n      height: initial; }\n      .MainArea > div.Story div {\n        background-repeat: no-repeat;\n        background-size: cover;\n        background-position: center; }\n      .MainArea > div.Story > div {\n        display: table;\n        position: relative;\n        height: 100vh;\n        width: 100%; }\n        .MainArea > div.Story > div > div {\n          display: table-cell;\n          vertical-align: middle; }\n          .MainArea > div.Story > div > div > div {\n            margin-left: auto;\n            margin-right: auto;\n            width: 40rem; }\n            .MainArea > div.Story > div > div > div p {\n              background-color: rgba(255, 255, 255, 0.8);\n              color: #000000;\n              font-size: 1.5rem;\n              text-shadow: 0px 0px 2px #ffffff; }\n      .MainArea > div.Story .FirstPrograms {\n        background-image: url(" + __webpack_require__(206) + "); }\n      .MainArea > div.Story .Education {\n        background-image: url(" + __webpack_require__(205) + "); }\n      .MainArea > div.Story .IT {\n        background-image: url(" + __webpack_require__(202) + "); }\n      .MainArea > div.Story .Development {\n        background-image: url(" + __webpack_require__(203) + "); }\n      .MainArea > div.Story .Progress {\n        background-image: url(" + __webpack_require__(204) + "); }\n    .MainArea > div.Resume {\n      font-family: Calibri, Candara, Segoe, \"Segoe UI\", Optima, Arial, sans-serif; }\n", ""]);
 
 // exports
 

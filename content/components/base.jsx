@@ -8,21 +8,104 @@ var scroll = require('scroll-into-view');
 
 class Base extends React.Component{
     componentDidMount() {
-        setTimeout(() => {
-            scroll(this.refs.FirstPrograms, {
-               time: 1000
-            });
-        }, 5000);
+        this.areas = {
+            'Home': {
+                main: this.refs.Splash    
+            },
+            'My Story': {
+                main: this.refs.Story,
+                1: this.refs.FirstPrograms,
+                2: this.refs.Education,
+                3: this.refs.IT,
+                4: this.refs.Development,
+                5: this.refs.Progress
+            },
+            'Resume': {
+                main: this.refs.Resume
+            }
+        };
+        
+        document.onkeydown = () => this.keypress();
         
         global.jarallax(document.querySelectorAll('.MainArea>div, .Story div'), {
            speed: 0.2 
         });
     }
     
+    keypress(e) {
+        if(this.processingScroll) {
+            return;
+        }
+        
+        this.processingScroll = true;
+        
+        e = e || window.event;
+        
+        var elem = (() => {
+            var elems = {
+                previous: null,
+                next: null
+            };
+            var regions = Object.keys(this.areas);
+           
+            for(var i = 0; i < regions.length; i++){
+                var sections = Object.keys(this.areas[regions[i]]);
+                for(var j = 0; j < sections.length; j++) {
+                    if(
+                        (
+                            !elems.previous &&
+                            this.areas[regions[i]][sections[j]].getBoundingClientRect().top < -50
+                        ) ||
+                        (
+                            this.areas[regions[i]][sections[j]].getBoundingClientRect().top < -50 &&
+                            this.areas[regions[i]][sections[j]].getBoundingClientRect().top > elems.previous.getBoundingClientRect().top
+                        )
+                    ) {
+                        elems.previous = this.areas[regions[i]][sections[j]];
+                    }
+                    else if(
+                        (
+                            !elems.next &&
+                            this.areas[regions[i]][sections[j]].getBoundingClientRect().top > 50
+                        ) ||
+                        (
+                            elems.next &&
+                            this.areas[regions[i]][sections[j]].getBoundingClientRect().top > 50 &&
+                            this.areas[regions[i]][sections[j]].getBoundingClientRect().top < elems.next.getBoundingClientRect().top
+                        )
+                    ){
+                        elems.next = this.areas[regions[i]][sections[j]];
+                    }
+                    else {
+                        continue;
+                    }
+                }
+            }
+           
+            return elems;
+        })();
+        
+        if(e.keyCode === 37 || e.keyCode === 38) {
+            e.preventDefault();
+            scroll(elem.previous, {
+                time: 1000
+            });
+        }
+        else if(e.keyCode === 39 || e.keyCode === 40) {
+            e.preventDefault();
+            scroll(elem.next, {
+                time: 1000
+            });
+        }
+        
+        this.processingScroll = false;
+    }
+    
     render() {
         return(
             <div className='MainArea'>
-                <div className="splash">
+                <div className="splash"
+                    ref="Splash">
                     <span className="quote">
                         Why fit in when you're born to stand out?
                         <br />
@@ -30,7 +113,8 @@ class Base extends React.Component{
                     </span>
                 </div>
                 
-                <div className="Story">
+                <div className="Story"
+                    ref="Story">
                     <div className="FirstPrograms"
                         ref="FirstPrograms">
                         <div>
@@ -120,8 +204,8 @@ class Base extends React.Component{
                     </div>
                 </div>
                 
-                <div className="resume"
-                    ref="resume">
+                <div className="Resume"
+                    ref="Resume">
                     <h1>
                         Wiley Hilton
                     </h1>
