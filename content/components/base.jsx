@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+var githubRibbon = require('../images/githubRibbon.webp');
+
 require('jarallax');
 require('./base.scss');
 
@@ -104,6 +106,16 @@ class Base extends React.Component{
     render() {
         return(
             <div className='MainArea'>
+            
+                <a href="https://github.com/Xmerr/PortfolioSite"
+                    target="_blank"
+                    id="githubRibbon">
+                    <img src={githubRibbon}
+                        draggable={false}
+                        alt="Fork Me" />
+                </a>
+                
+                
                 <div className="splash"
                     ref="Splash">
                     <span className="quote">
