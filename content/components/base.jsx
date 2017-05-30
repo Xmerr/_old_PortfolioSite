@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var githubRibbon = require('../images/githubRibbon.webp');
+var images = {
+    ribbon: require('../images/githubRibbon.webp'),
+    arrow: require('../images/Arrow.webp')
+};
 
 require('jarallax');
 require('./base.scss');
@@ -88,13 +91,17 @@ class Base extends React.Component{
         })();
         
         if(e.keyCode === 37 || e.keyCode === 38) {
-            e.preventDefault();
+            if(e.preventDefault) {
+                e.preventDefault();
+            }
             scroll(elem.previous, {
                 time: 1000
             });
         }
         else if(e.keyCode === 39 || e.keyCode === 40) {
-            e.preventDefault();
+            if(e.preventDefault) {
+                e.preventDefault();
+            }
             scroll(elem.next, {
                 time: 1000
             });
@@ -110,11 +117,22 @@ class Base extends React.Component{
                 <a href="https://github.com/Xmerr/PortfolioSite"
                     target="_blank"
                     id="githubRibbon">
-                    <img src={githubRibbon}
+                    <img src={images.ribbon}
                         draggable={false}
                         alt="Fork Me" />
                 </a>
                 
+                <div className="arrows">
+                    <img src={images.arrow}
+                        className="arrow up"
+                        onClick={() => this.keypress({keyCode: 37})}
+                        draggable={false} />
+                        
+                    <img src={images.arrow}
+                        className="arrow down"
+                        onClick={() => this.keypress({keyCode: 39})}
+                        draggable={false} />
+                </div>
                 
                 <div className="splash"
                     ref="Splash">
