@@ -49,9 +49,4 @@ class Menu extends React.Component{
     }
 }
 
-Menu.propTypes = {
-    areas: React.PropTypes.object.isRequired, // Possible areas the user can navigate to
-    scroll: React.PropTypes.func.isRequired, // Scroll to specific area
-};
-
 export default Menu;

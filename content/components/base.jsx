@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Menu from './menu.jsx';
+import Projects from './projects.jsx';
 
 var images = {
     ribbon: require('../images/githubRibbon.webp'),
@@ -10,8 +11,7 @@ var images = {
 
 require('jarallax');
 require('./base.scss');
-
-var scroll = require('scroll-into-view');
+var velocity = require('velocity-animate');
 
 class Base extends React.Component{
     componentDidMount() {
@@ -27,10 +27,15 @@ class Base extends React.Component{
                 4: this.refs.Development,
                 5: this.refs.Progress
             },
+            "Projects" : {
+                main: this.refs.Projects.refs.main
+            },
             'Resume': {
                 main: this.refs.Resume
             }
         };
+        
+        console.log(this);
         
         this.scrollTimer = null;
         
@@ -52,6 +57,13 @@ class Base extends React.Component{
         });
         
         this.forceUpdate();
+    }
+    
+    scroll(dom) {
+        velocity(dom, "scroll", {
+           easing: "easeOutBack",
+           duration: 1000
+        });
     }
     
     keypress(e) {
@@ -111,40 +123,28 @@ class Base extends React.Component{
             if(e.preventDefault) {
                 e.preventDefault();
             }
-            scroll(elem.previous, {
-                time: 1000
-            });
+            this.scroll(elem.previous);
         }
         else if(e.keyCode === 39 || e.keyCode === 40) {
             if(e.preventDefault) {
                 e.preventDefault();
             }
-            scroll(elem.next, {
-                time: 1000
-            });
+            this.scroll(elem.next);
         }
         else if (e.keyCode === "scroll") {
             if(elem.previous && elem.next && (-elem.previous.getBoundingClientRect().top === elem.next.getBoundingClientRect().top)) {  }
             else if(elem.previous && elem.next && (-elem.previous.getBoundingClientRect().top) > elem.next.getBoundingClientRect().top) {
-                scroll(elem.next, {
-                    time: 1000
-                });
+                this.scroll(elem.next);
             }
-            else if (elem.previous && elem.next){
-                scroll(elem.previous, {
-                    time: 1000
-                });
+            else if (elem.previous) {
+                this.scroll(elem.previous);
             }
             else {
                 if(elem.previous){
-                    scroll(elem.previous, {
-                        time: 1000
-                    });
+                    this.scroll(elem.previous);
                 }
                 else {
-                    scroll(elem.next, {
-                        time: 1000
-                    });
+                    this.scroll(elem.next);
                 }
             }
         }
@@ -161,7 +161,7 @@ class Base extends React.Component{
                             <Menu
                                 areas={this.areas}
                                 scroll={dom => {
-                                    scroll(dom, {
+                                    this.scroll(dom, {
                                         time: 1000
                                     });
                                 }}/>
@@ -288,6 +288,8 @@ class Base extends React.Component{
                         </div>
                     </div>
                 </div>
+                
+                <Projects ref="Projects" />
                 
                 <div className="Resume"
                     ref="Resume">
