@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Menu from './menu.jsx';
+
 var images = {
     ribbon: require('../images/githubRibbon.webp'),
     arrow: require('../images/Arrow.webp')
@@ -42,12 +44,14 @@ class Base extends React.Component{
                 this.keypress({
                    keyCode: "scroll" 
                 });
-            }, 1000);
+            }, 750);
         };
         
         global.jarallax(document.querySelectorAll('.MainArea>div, .Story div'), {
            speed: 0.2 
         });
+        
+        this.forceUpdate();
     }
     
     keypress(e) {
@@ -120,9 +124,7 @@ class Base extends React.Component{
             });
         }
         else if (e.keyCode === "scroll") {
-            if(elem.previous && elem.next && (-elem.previous.getBoundingClientRect().top === elem.next.getBoundingClientRect().top)){
-                
-            }
+            if(elem.previous && elem.next && (-elem.previous.getBoundingClientRect().top === elem.next.getBoundingClientRect().top)) {  }
             else if(elem.previous && elem.next && (-elem.previous.getBoundingClientRect().top) > elem.next.getBoundingClientRect().top) {
                 scroll(elem.next, {
                     time: 1000
@@ -153,6 +155,19 @@ class Base extends React.Component{
     render() {
         return(
             <div className='MainArea'>
+                {(()=>{
+                    if(this.areas) {
+                        return(
+                            <Menu
+                                areas={this.areas}
+                                scroll={dom => {
+                                    scroll(dom, {
+                                        time: 1000
+                                    });
+                                }}/>
+                        );
+                    }
+                })()}
             
                 <a href="https://github.com/Xmerr/PortfolioSite"
                     target="_blank"
