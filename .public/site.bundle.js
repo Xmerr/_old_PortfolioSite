@@ -10162,23 +10162,24 @@ var Base = function (_React$Component) {
                 }
             };
 
-            console.log(this);
-
             this.scrollTimer = null;
 
             document.onkeydown = function () {
                 return _this2.keypress();
             };
             document.onscroll = function () {
-                if (_this2.scrollTimer) {
-                    window.clearTimeout(_this2.scrollTimer);
-                }
+                if (!_this2.processingScroll) {
+                    console.log("scroll registered");
+                    if (_this2.scrollTimer) {
+                        window.clearTimeout(_this2.scrollTimer);
+                    }
 
-                _this2.scrollTimer = window.setTimeout(function () {
-                    _this2.keypress({
-                        keyCode: "scroll"
-                    });
-                }, 750);
+                    _this2.scrollTimer = window.setTimeout(function () {
+                        _this2.keypress({
+                            keyCode: "scroll"
+                        });
+                    }, 750);
+                }
             };
 
             global.jarallax(document.querySelectorAll('.MainArea>div, .Story div'), {
@@ -10190,15 +10191,25 @@ var Base = function (_React$Component) {
     }, {
         key: 'scroll',
         value: function scroll(dom) {
+            var _this3 = this;
+
             velocity(dom, "scroll", {
                 easing: "easeOutBack",
-                duration: 1000
+                duration: 1000,
+                begin: function begin() {
+                    _this3.processingScroll = true;
+                    console.log("scroll started");
+                },
+                complete: function complete() {
+                    _this3.processingScroll = false;
+                    console.log("done scrolling");
+                }
             });
         }
     }, {
         key: 'keypress',
         value: function keypress(e) {
-            var _this3 = this;
+            var _this4 = this;
 
             if (this.processingScroll) {
                 return;
@@ -10213,15 +10224,15 @@ var Base = function (_React$Component) {
                     previous: null,
                     next: null
                 };
-                var regions = Object.keys(_this3.areas);
+                var regions = Object.keys(_this4.areas);
 
                 for (var i = 0; i < regions.length; i++) {
-                    var sections = Object.keys(_this3.areas[regions[i]]);
+                    var sections = Object.keys(_this4.areas[regions[i]]);
                     for (var j = 0; j < sections.length; j++) {
-                        if (!elems.previous && _this3.areas[regions[i]][sections[j]].getBoundingClientRect().top < -50 || _this3.areas[regions[i]][sections[j]].getBoundingClientRect().top < -50 && _this3.areas[regions[i]][sections[j]].getBoundingClientRect().top > elems.previous.getBoundingClientRect().top) {
-                            elems.previous = _this3.areas[regions[i]][sections[j]];
-                        } else if (!elems.next && _this3.areas[regions[i]][sections[j]].getBoundingClientRect().top > 50 || elems.next && _this3.areas[regions[i]][sections[j]].getBoundingClientRect().top > 50 && _this3.areas[regions[i]][sections[j]].getBoundingClientRect().top < elems.next.getBoundingClientRect().top) {
-                            elems.next = _this3.areas[regions[i]][sections[j]];
+                        if (!elems.previous && _this4.areas[regions[i]][sections[j]].getBoundingClientRect().top < -50 || _this4.areas[regions[i]][sections[j]].getBoundingClientRect().top < -50 && _this4.areas[regions[i]][sections[j]].getBoundingClientRect().top > elems.previous.getBoundingClientRect().top) {
+                            elems.previous = _this4.areas[regions[i]][sections[j]];
+                        } else if (!elems.next && _this4.areas[regions[i]][sections[j]].getBoundingClientRect().top > 50 || elems.next && _this4.areas[regions[i]][sections[j]].getBoundingClientRect().top > 50 && _this4.areas[regions[i]][sections[j]].getBoundingClientRect().top < elems.next.getBoundingClientRect().top) {
+                            elems.next = _this4.areas[regions[i]][sections[j]];
                         } else {
                             continue;
                         }
@@ -10254,23 +10265,21 @@ var Base = function (_React$Component) {
                     }
                 }
             }
-
-            this.processingScroll = false;
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this4 = this;
+            var _this5 = this;
 
             return _react2.default.createElement(
                 'div',
                 { className: 'MainArea' },
                 function () {
-                    if (_this4.areas) {
+                    if (_this5.areas) {
                         return _react2.default.createElement(_menu2.default, {
-                            areas: _this4.areas,
+                            areas: _this5.areas,
                             scroll: function scroll(dom) {
-                                _this4.scroll(dom, {
+                                _this5.scroll(dom, {
                                     time: 1000
                                 });
                             } });
@@ -10291,13 +10300,13 @@ var Base = function (_React$Component) {
                     _react2.default.createElement('img', { src: images.arrow,
                         className: 'arrow up',
                         onClick: function onClick() {
-                            return _this4.keypress({ keyCode: 37 });
+                            return _this5.keypress({ keyCode: 37 });
                         },
                         draggable: false }),
                     _react2.default.createElement('img', { src: images.arrow,
                         className: 'arrow down',
                         onClick: function onClick() {
-                            return _this4.keypress({ keyCode: 39 });
+                            return _this5.keypress({ keyCode: 39 });
                         },
                         draggable: false })
                 ),

@@ -35,21 +35,22 @@ class Base extends React.Component{
             }
         };
         
-        console.log(this);
-        
         this.scrollTimer = null;
         
         document.onkeydown = () => this.keypress();
         document.onscroll = () => {
-            if(this.scrollTimer) {
-                window.clearTimeout(this.scrollTimer);
+            if(!this.processingScroll) {
+                console.log("scroll registered");
+                if(this.scrollTimer) {
+                    window.clearTimeout(this.scrollTimer);
+                }
+                
+                this.scrollTimer = window.setTimeout(() => {
+                    this.keypress({
+                       keyCode: "scroll" 
+                    });
+                }, 750);
             }
-            
-            this.scrollTimer = window.setTimeout(() => {
-                this.keypress({
-                   keyCode: "scroll" 
-                });
-            }, 750);
         };
         
         global.jarallax(document.querySelectorAll('.MainArea>div, .Story div'), {
@@ -62,7 +63,15 @@ class Base extends React.Component{
     scroll(dom) {
         velocity(dom, "scroll", {
            easing: "easeOutBack",
-           duration: 1000
+           duration: 1000,
+           begin: () => {
+                this.processingScroll = true;
+                console.log("scroll started");
+           },
+           complete: () => {
+               this.processingScroll = false;
+               console.log("done scrolling");
+           }
         });
     }
     
@@ -148,8 +157,6 @@ class Base extends React.Component{
                 }
             }
         }
-        
-        this.processingScroll = false;
     }
     
     render() {
