@@ -30,7 +30,20 @@ class Base extends React.Component{
             }
         };
         
+        this.scrollTimer = null;
+        
         document.onkeydown = () => this.keypress();
+        document.onscroll = () => {
+            if(this.scrollTimer) {
+                window.clearTimeout(this.scrollTimer);
+            }
+            
+            this.scrollTimer = window.setTimeout(() => {
+                this.keypress({
+                   keyCode: "scroll" 
+                });
+            }, 1000);
+        };
         
         global.jarallax(document.querySelectorAll('.MainArea>div, .Story div'), {
            speed: 0.2 
@@ -105,6 +118,33 @@ class Base extends React.Component{
             scroll(elem.next, {
                 time: 1000
             });
+        }
+        else if (e.keyCode === "scroll") {
+            if(elem.previous && elem.next && (-elem.previous.getBoundingClientRect().top === elem.next.getBoundingClientRect().top)){
+                
+            }
+            else if(elem.previous && elem.next && (-elem.previous.getBoundingClientRect().top) > elem.next.getBoundingClientRect().top) {
+                scroll(elem.next, {
+                    time: 1000
+                });
+            }
+            else if (elem.previous && elem.next){
+                scroll(elem.previous, {
+                    time: 1000
+                });
+            }
+            else {
+                if(elem.previous){
+                    scroll(elem.previous, {
+                        time: 1000
+                    });
+                }
+                else {
+                    scroll(elem.next, {
+                        time: 1000
+                    });
+                }
+            }
         }
         
         this.processingScroll = false;

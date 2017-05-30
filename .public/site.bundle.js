@@ -10339,8 +10339,21 @@ var Base = function (_React$Component) {
                 }
             };
 
+            this.scrollTimer = null;
+
             document.onkeydown = function () {
                 return _this2.keypress();
+            };
+            document.onscroll = function () {
+                if (_this2.scrollTimer) {
+                    window.clearTimeout(_this2.scrollTimer);
+                }
+
+                _this2.scrollTimer = window.setTimeout(function () {
+                    _this2.keypress({
+                        keyCode: "scroll"
+                    });
+                }, 1000);
             };
 
             global.jarallax(document.querySelectorAll('.MainArea>div, .Story div'), {
@@ -10397,6 +10410,26 @@ var Base = function (_React$Component) {
                 scroll(elem.next, {
                     time: 1000
                 });
+            } else if (e.keyCode === "scroll") {
+                if (elem.previous && elem.next && -elem.previous.getBoundingClientRect().top === elem.next.getBoundingClientRect().top) {} else if (elem.previous && elem.next && -elem.previous.getBoundingClientRect().top > elem.next.getBoundingClientRect().top) {
+                    scroll(elem.next, {
+                        time: 1000
+                    });
+                } else if (elem.previous && elem.next) {
+                    scroll(elem.previous, {
+                        time: 1000
+                    });
+                } else {
+                    if (elem.previous) {
+                        scroll(elem.previous, {
+                            time: 1000
+                        });
+                    } else {
+                        scroll(elem.next, {
+                            time: 1000
+                        });
+                    }
+                }
             }
 
             this.processingScroll = false;
