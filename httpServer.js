@@ -16,8 +16,9 @@ module.export = (() => {
     var express = require('express'),
         app = express();
 
+    console.log(process.env.dndImageLocation);
     app.use(process.env.dndImageLocation, express.static(path.join(__dirname + '/../bots/files'),{
-        index: false,
+        index: true,
         extensions: ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'gif', 'GIF', 'webp', 'html']
     }));
     app.use('/public', express.static(path.join(__dirname + '/.public'),{
