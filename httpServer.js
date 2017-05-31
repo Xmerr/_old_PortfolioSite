@@ -16,11 +16,11 @@ module.export = (() => {
     var express = require('express'),
         app = express();
 
-    app.use(process.env.dndImageLocation, express.static(path.join(__dirname + '/../bot/files'),{
+    app.use(process.env.dndImageLocation, express.static(path.join(__dirname, 'uploadedImages'),{
         index: false,
         extensions: ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'gif', 'GIF', 'webp', 'html']
     }));
-    app.use('/public', express.static(path.join(__dirname + '/.public'),{
+    app.use('/public', express.static(path.join(__dirname, '.public'),{
         index: false,
         extensions: ['js', 'html']
     }));
