@@ -4,6 +4,14 @@ var apps = require('./apps.js');
 
 process.env = require('../process.env.json');
 
+(() => {
+    var os = require('os');
+    if(os.hostname().indexOf('xmer') !== -1) {
+        // Determine if it's my test server or not
+        process.env.port = 8080;
+    }
+})();
+
 module.export = (() => {
     var express = require('express'),
         app = express();
