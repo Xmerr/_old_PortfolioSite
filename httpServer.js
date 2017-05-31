@@ -31,25 +31,4 @@ module.export = (() => {
     
     app.listen(process.env.port);
     console.log(`website listening on port ${process.env.port}`);
-    
-    for(var i in apps) {
-        var name = i;
-        (name => {
-            ps.lookup({
-                command: 'node',
-                arguments: apps[name]
-            }, (err, resultList) => {
-                if(err){
-                    throw err;
-                }
-                
-                if(resultList.length > 0) {
-                    console.log(`${name} Status: Running`);
-                }
-                else {
-                    console.log(`${name} Status: Not Running`);
-                }
-            });
-        })(name);
-    }
 })();
