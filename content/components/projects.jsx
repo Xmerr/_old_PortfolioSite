@@ -27,7 +27,7 @@ class Projects extends React.Component{
         return (
             <div className="Projects" ref="main">
                 {(()=>{
-                    var minHeight = (100 / Math.ceil(this.projects.length / 2)) + "%";
+                    var maxHeight = (100 / Math.ceil(this.projects.length / 2)) + "%";
                     var projects = [];
                     
                     for(var i = 0, j = this.projects.length - 1; i <= j ; i++) {
@@ -38,7 +38,7 @@ class Projects extends React.Component{
                                 key={this.projects[i].title}
                                 onClick={click}
                                 style={{
-                                    minHeight
+                                    maxHeight
                                 }}>
                                 <div className="Header">
                                     <h4>
@@ -48,11 +48,8 @@ class Projects extends React.Component{
                                         {this.projects[i].subtitle}
                                     </p>
                                 </div>
-                                <div className="Image"
-                                    style={{
-                                        backgroundImage: `url(${this.projects[i].image})`
-                                    }}
-                                />
+                                <img draggable="false"
+                                    src={this.projects[i].image} />
                             </div>
                         );
                     }
