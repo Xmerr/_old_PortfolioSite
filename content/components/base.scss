@@ -28,6 +28,8 @@ body {
     margin: 0;
     padding: 0;
     
+    overflow-x: hidden;
+    
     * {
         font-size: 15px;
     }
@@ -41,6 +43,12 @@ body {
         z-index: 9999999;
         
         cursor: pointer;
+        
+        width: 10%;
+        
+        & > img {
+            width: 100%;
+        }
     }
     
     .arrows {
@@ -183,6 +191,52 @@ body {
             
             .Progress {
                 background-image: url('../images/future.webp');
+            }
+        }
+        
+        &.Projects {
+            padding: 5px 5%;
+            
+            div.col-xs-6 {
+                display: inline-block;
+                width: 45%;
+                
+                word-wrap: break-word;
+                overflow: hidden;
+                
+                cursor: pointer;
+                
+                & > .Header {
+                    & > h4 {
+                        background-color: lightblue;
+                        
+                        border-bottom: 1px solid black;
+                        border-radius: 8px 8px 0 0;
+                        
+                        text-align: center;
+                        line-height: 40px;
+                        margin: 0;
+                    }
+                    
+                    & > p {
+                        margin: 0;
+                        padding: 10px 20px;
+                        
+                        height: 50px;
+                    }
+                    
+                    border: 2px solid black;
+                    border-bottom: none;
+                    
+                    border-radius: 8px 8px 0 0;
+                }
+                
+                & > .Image {
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                
+                    height: 100%;
+                }
             }
         }
         

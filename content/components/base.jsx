@@ -40,7 +40,6 @@ class Base extends React.Component{
         document.onkeydown = () => this.keypress();
         
         var mouseWheelHandler = () => {
-            console.log("scroll registered");
             if(this.scrollTimer) {
                 window.clearTimeout(this.scrollTimer);
             }
