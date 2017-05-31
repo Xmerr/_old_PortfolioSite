@@ -38,20 +38,28 @@ class Base extends React.Component{
         this.scrollTimer = null;
         
         document.onkeydown = () => this.keypress();
-        document.onscroll = () => {
-            if(!this.processingScroll) {
-                console.log("scroll registered");
-                if(this.scrollTimer) {
-                    window.clearTimeout(this.scrollTimer);
-                }
-                
-                this.scrollTimer = window.setTimeout(() => {
-                    this.keypress({
-                       keyCode: "scroll" 
-                    });
-                }, 750);
+        
+        var mouseWheelHandler = () => {
+            console.log("scroll registered");
+            if(this.scrollTimer) {
+                window.clearTimeout(this.scrollTimer);
             }
+            
+            this.scrollTimer = window.setTimeout(() => {
+                this.keypress({
+                   keyCode: "scroll" 
+                });
+            }, 750);
         };
+        
+        if (document.body.addEventListener) {
+        	// IE9, Chrome, Safari, Opera
+        	document.body.addEventListener("mousewheel", mouseWheelHandler, false);
+        	// Firefox
+        	document.body.addEventListener("DOMMouseScroll", mouseWheelHandler, false);
+        }
+        // IE 6/7/8
+        else document.body.attachEvent("onmousewheel", mouseWheelHandler);
         
         global.jarallax(document.querySelectorAll('.MainArea>div, .Story div'), {
            speed: 0.2 
@@ -64,13 +72,8 @@ class Base extends React.Component{
         velocity(dom, "scroll", {
            easing: "easeOutBack",
            duration: 1000,
-           begin: () => {
-                this.processingScroll = true;
-                console.log("scroll started");
-           },
            complete: () => {
                this.processingScroll = false;
-               console.log("done scrolling");
            }
         });
     }
