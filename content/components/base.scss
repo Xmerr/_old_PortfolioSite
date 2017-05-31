@@ -1,0 +1,249 @@
+@media all and (max-width: 599px) {
+}
+@media all and (min-width: 600px) and (max-width:799px){
+}
+@media all and (min-width: 800px) and (max-width:1024px){
+    
+}
+@media all and (min-width: 700px) and (max-width: 1024px){
+    
+}
+@media all and (min-width: 1025px) and (max-width: 1399px){
+    html{
+        font-size: 16px;
+    }
+}
+@media all and (min-width: 1400px){
+    html{
+        font-size: 18px;
+    }
+}
+
+@font-face {
+    font-family: Suess;
+    src: url('../fonts/Gabbaland.ttf');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    
+    overflow-x: hidden;
+    
+    * {
+        font-size: 15px;
+    }
+}
+
+.MainArea {
+    #githubRibbon {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 9999999;
+        
+        cursor: pointer;
+        
+        width: 10%;
+        
+        & > img {
+            width: 100%;
+        }
+    }
+    
+    .arrows {
+        position: fixed;
+        right: 5%;
+        top: 40%;
+        z-index: 9999999;
+        
+        width: 3rem;
+        
+        .arrow {
+            cursor: pointer;
+            
+            width: 100%;
+            margin: 5px;
+        }
+        
+        .down {
+            -moz-transform: scaleY(-1);
+            -o-transform: scaleY(-1);
+            -webkit-transform: scaleY(-1);
+            transform: scaleY(-1);
+        }
+    }
+    
+    .Menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 900000;
+        
+        height: 10%;
+        
+        div {
+            display: inline-block;
+            
+            span {
+                display: inline-block;
+                
+                background-color: rgba(200, 200, 200, .75);
+                
+                padding: 5px 10px;
+                margin: 5px;
+                border-radius: 15px;
+                
+                cursor: pointer;
+                
+                &:hover {
+                    background-color: rgba(200, 200, 200, 1);
+                }
+            }
+        }
+        
+        & > div > span {
+            display: block;
+            
+            margin-bottom: 15px;
+        }
+    }
+    
+    & > div {
+        width: 100%;
+        height: 100vh;
+        
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        
+        &.splash {
+            position: relative;
+            
+            background-image: url('../images/splash.webp');
+            
+            .quote {
+                text-shadow: -6px 7px 7px #073d3e;
+                background-color: transparent;
+    
+                position: absolute;
+                bottom: 50%;
+                left: 50%;
+                
+                width: 30%;
+                
+                font-size: 2.5rem;
+                text-align: right;
+                font-family: Suess;
+            }
+        }
+        
+        &.Story {
+            position: relative;
+            height: initial;
+            
+            div {
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+            }
+            
+            & > div {
+                display: table;
+                position: relative;
+                height: 100vh;
+                width: 100%;
+                
+                & > div {
+                    display: table-cell;
+                    vertical-align: middle;
+                    
+                    & > div {
+                        margin-left: auto;
+                        margin-right: auto;
+                        width: 40rem;
+                        
+                        p {
+                            background-color: rgba(255, 255, 255, 0.8);
+                            color: #000000;
+                            
+                            font-size: 1.5rem;
+                            text-shadow: 0px 0px 2px #ffffff;
+                        }
+                    }
+                }
+            }
+            .FirstPrograms {
+                background-image: url('../images/matrix.webp');
+            }
+            
+            .Education {
+                background-image: url('../images/learning.webp');
+            }
+            
+            .IT {
+                background-image: url('../images/cables.webp');
+            }
+            
+            .Development {
+                background-image: url('../images/development.webp');
+            }
+            
+            .Progress {
+                background-image: url('../images/future.webp');
+            }
+        }
+        
+        &.Projects {
+            padding: 5px 0;
+            
+            div.col-xs-6 {
+                display: inline-block;
+                width: 45%;
+                
+                margin: 0 2.5%;
+                
+                word-wrap: break-word;
+                overflow: hidden;
+                
+                cursor: pointer;
+                
+                & > .Header {
+                    & > h4 {
+                        background-color: lightblue;
+                        
+                        border-bottom: 1px solid black;
+                        border-radius: 8px 8px 0 0;
+                        
+                        text-align: center;
+                        line-height: 40px;
+                        margin: 0;
+                    }
+                    
+                    & > p {
+                        margin: 0;
+                        padding: 10px 20px;
+                        
+                        height: 75px;
+                    }
+                    
+                    border: 2px solid black;
+                    border-bottom: none;
+                    
+                    border-radius: 8px 8px 0 0;
+                }
+                
+                & > img {
+                    max-height: 100%;
+                    max-width: 100%;
+                    
+                    border-radius: 0 0 8px 8px;
+                }
+            }
+        }
+        
+        &.Resume {
+            font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+        }
+    }
+}
