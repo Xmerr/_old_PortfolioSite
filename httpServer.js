@@ -1,6 +1,4 @@
 var path = require('path');
-var ps = require('ps-node');
-var apps = require('./apps.js');
 
 process.env = require('../process.env.json');
 
@@ -14,13 +12,23 @@ process.env = require('../process.env.json');
 
 module.export = (() => {
     var express = require('express'),
+        subdomain = require('express-subdomain'),
+        dndRouter = require('./dndShortcut/Router.js')(express),
         app = express();
+        
+    app.use(subdomain('dnd.*', dndRouter));
 
     app.use(process.env.dndImageLocation, express.static(path.join(__dirname, 'uploadedImages'),{
         index: false,
         extensions: ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'gif', 'GIF', 'webp', 'html']
     }));
+    
     app.use('/public', express.static(path.join(__dirname, '.public'),{
+        index: false,
+        extensions: ['js', 'html']
+    }));
+    
+    app.use('/dndpublic', express.static(path.join(__dirname, './dndShortcut/.public'),{
         index: false,
         extensions: ['js', 'html']
     }));
