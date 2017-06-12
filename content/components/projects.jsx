@@ -1,7 +1,8 @@
 import React from 'react';
 
 var images = {
-    website: require('../images/website.webp')
+    website: require('../images/website.webp'),
+    dnd: require('../images/dndTool.webp')
 };
 
 class Projects extends React.Component{
@@ -19,6 +20,13 @@ class Projects extends React.Component{
                     "In the future he will have much more capabilities such as querying all DnD 5e rule books, spell books, and items.",
                 github: "https://github.com/Xmerr/Xmerbot",
                 image: images.website
+            },
+            {
+                title: "DnD Tool",
+                subtitle: "This tool is being developed for dnd groups to better manage their campaigns. It will allow users " +
+                    "to quickly create their characters to be used in campaigns as well as manage the campaign for the DM.",
+                github: "https://github.com/Xmerr/DnD-5e",
+                image: images.dnd
             }
         ];
     }

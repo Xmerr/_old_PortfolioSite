@@ -13,8 +13,8 @@ process.env = require('../process.env.json');
 module.export = (() => {
     var express = require('express'),
         subdomain = require('express-subdomain'),
-        dndRouter = require('./dndShortcut/Router.js')(express),
-        app = express();
+        app = express(),
+        dndRouter = require('./dndShortcut/Router.js')(express, app);
         
     app.use(subdomain('dnd.*', dndRouter));
 
@@ -24,11 +24,6 @@ module.export = (() => {
     }));
     
     app.use('/public', express.static(path.join(__dirname, '.public'),{
-        index: false,
-        extensions: ['js', 'html']
-    }));
-    
-    app.use('/dndpublic', express.static(path.join(__dirname, './dndShortcut/.public'),{
         index: false,
         extensions: ['js', 'html']
     }));
