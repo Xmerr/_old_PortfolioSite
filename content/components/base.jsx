@@ -5,8 +5,8 @@ import Menu from './menu.jsx';
 import Projects from './projects.jsx';
 
 var images = {
-    ribbon: require('../images/githubRibbon.webp'),
-    arrow: require('../images/Arrow.webp')
+    ribbon: require('../images/githubRibbon.png'),
+    arrow: require('../images/Arrow.png')
 };
 
 require('jarallax');

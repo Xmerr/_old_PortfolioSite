@@ -120,7 +120,7 @@ body {
         &.splash {
             position: relative;
             
-            background-image: url('../images/splash.webp');
+            background-image: url('../images/splash.png');
             
             .quote {
                 text-shadow: -6px 7px 7px #073d3e;
@@ -169,28 +169,32 @@ body {
                             
                             font-size: 1.5rem;
                             text-shadow: 0px 0px 2px #ffffff;
+                            
+                            padding: 1em;
+                            
+                            border-radius: 4px;
                         }
                     }
                 }
             }
             .FirstPrograms {
-                background-image: url('../images/matrix.webp');
+                background-image: url('../images/matrix.png');
             }
             
             .Education {
-                background-image: url('../images/learning.webp');
+                background-image: url('../images/learning.png');
             }
             
             .IT {
-                background-image: url('../images/cables.webp');
+                background-image: url('../images/cables.png');
             }
             
             .Development {
-                background-image: url('../images/development.webp');
+                background-image: url('../images/development.png');
             }
             
             .Progress {
-                background-image: url('../images/future.webp');
+                background-image: url('../images/future.png');
             }
         }
         

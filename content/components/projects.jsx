@@ -1,8 +1,8 @@
 import React from 'react';
 
 var images = {
-    website: require('../images/website.webp'),
-    dnd: require('../images/dndTool.webp')
+    website: require('../images/website.png'),
+    dnd: require('../images/dndTool.png')
 };
 
 class Projects extends React.Component{
