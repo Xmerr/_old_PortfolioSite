@@ -32,84 +32,11 @@ body {
     
     * {
         font-size: 15px;
+        box-sizing: border-box;
     }
 }
 
-.MainArea {
-    #githubRibbon {
-        position: fixed;
-        top: 0;
-        right: 0;
-        z-index: 9999999;
-        
-        cursor: pointer;
-        
-        width: 10%;
-        
-        & > img {
-            width: 100%;
-        }
-    }
-    
-    .arrows {
-        position: fixed;
-        right: 5%;
-        top: 40%;
-        z-index: 9999999;
-        
-        width: 3rem;
-        
-        .arrow {
-            cursor: pointer;
-            
-            width: 100%;
-            margin: 5px;
-        }
-        
-        .down {
-            -moz-transform: scaleY(-1);
-            -o-transform: scaleY(-1);
-            -webkit-transform: scaleY(-1);
-            transform: scaleY(-1);
-        }
-    }
-    
-    .Menu {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        z-index: 900000;
-        
-        height: 10%;
-        
-        div {
-            display: inline-block;
-            
-            span {
-                display: inline-block;
-                
-                background-color: rgba(200, 200, 200, .75);
-                
-                padding: 5px 10px;
-                margin: 5px;
-                border-radius: 15px;
-                
-                cursor: pointer;
-                
-                &:hover {
-                    background-color: rgba(200, 200, 200, 1);
-                }
-            }
-        }
-        
-        & > div > span {
-            display: block;
-            
-            margin-bottom: 15px;
-        }
-    }
-    
-    & > div {
+.Splash {
         width: 100%;
         height: 100vh;
         
@@ -117,137 +44,42 @@ body {
         background-size: cover;
         background-position: center;
         
-        &.splash {
-            position: relative;
-            
-            background-image: url('../images/splash.png');
-            
-            .quote {
-                text-shadow: -6px 7px 7px #073d3e;
-                background-color: transparent;
-    
-                position: absolute;
-                bottom: 50%;
-                left: 50%;
-                
-                width: 30%;
-                
-                font-size: 2.5rem;
-                text-align: right;
-                font-family: Suess;
-            }
-        }
+        position: relative;
         
-        &.Story {
-            position: relative;
-            height: initial;
-            
-            div {
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-            }
-            
-            & > div {
-                display: table;
-                position: relative;
-                height: 100vh;
-                width: 100%;
-                
-                & > div {
-                    display: table-cell;
-                    vertical-align: middle;
-                    
-                    & > div {
-                        margin-left: auto;
-                        margin-right: auto;
-                        width: 40rem;
-                        
-                        p {
-                            background-color: rgba(255, 255, 255, 0.8);
-                            color: #000000;
-                            
-                            font-size: 1.5rem;
-                            text-shadow: 0px 0px 2px #ffffff;
-                            
-                            padding: 1em;
-                            
-                            border-radius: 4px;
-                        }
-                    }
-                }
-            }
-            .FirstPrograms {
-                background-image: url('../images/matrix.png');
-            }
-            
-            .Education {
-                background-image: url('../images/learning.png');
-            }
-            
-            .IT {
-                background-image: url('../images/cables.png');
-            }
-            
-            .Development {
-                background-image: url('../images/development.png');
-            }
-            
-            .Progress {
-                background-image: url('../images/future.png');
-            }
-        }
+        background-image: url('../images/splash.jpeg');
         
-        &.Projects {
-            padding: 5px 0;
+        font-family: Suess;
+        display: flex;
+        
+        & > div {
+            flex: 1 1 1px;
+            text-shadow: -6px 7px 7px #073d3e;
+            font-size: 2.5rem;
+            background-color: transparent;
+            text-align: center;
             
-            div.col-xs-6 {
-                display: inline-block;
-                width: 45%;
+            padding: 20% 0;
+            
+            cursor: default;
+            
+            .title {
+                font-size: 3.5rem;
+                text-stoke: 0.5px black;
+                -webkit-text-stroke: 0.5px black;
                 
-                margin: 0 2.5%;
-                
-                word-wrap: break-word;
-                overflow: hidden;
-                
-                cursor: pointer;
-                
-                & > .Header {
-                    & > h4 {
-                        background-color: lightblue;
-                        
-                        border-bottom: 1px solid black;
-                        border-radius: 8px 8px 0 0;
-                        
-                        text-align: center;
-                        line-height: 40px;
-                        margin: 0;
-                    }
-                    
-                    & > p {
-                        margin: 0;
-                        padding: 10px 20px;
-                        
-                        height: 75px;
-                    }
-                    
-                    border: 2px solid black;
-                    border-bottom: none;
-                    
-                    border-radius: 8px 8px 0 0;
+                & > span {
+                    font-size: inherit;
+                    transition: color 1s;
+                    -webkit-transition: color 1s;
                 }
                 
-                & > img {
-                    max-height: 100%;
-                    max-width: 100%;
-                    
-                    border-radius: 0 0 8px 8px;
+                & > span.colored {
+                    color: #158392;
                 }
             }
         }
-        
-        &.Resume {
-            font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-        }
+}
+.MainArea {
+    & > div {
     }
 }

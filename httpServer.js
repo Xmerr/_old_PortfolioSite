@@ -1,6 +1,8 @@
 var path = require('path');
 
-process.env = require('../process.env.json');
+process.env = {
+    port: 80
+};
 
 (() => {
     var os = require('os');
@@ -12,17 +14,8 @@ process.env = require('../process.env.json');
 
 module.export = (() => {
     var express = require('express'),
-        subdomain = require('express-subdomain'),
-        app = express(),
-        dndRouter = require('./dndShortcut/Router.js')(express, app);
+        app = express();
         
-    app.use(subdomain('dnd.*', dndRouter));
-
-    app.use(process.env.dndImageLocation, express.static(path.join(__dirname, 'uploadedImages'),{
-        index: false,
-        extensions: ['jpg', 'jpeg', 'JPG', 'JPEG', 'png', 'PNG', 'gif', 'GIF', 'webp', 'html']
-    }));
-    
     app.use('/public', express.static(path.join(__dirname, '.public'),{
         index: false,
         extensions: ['js', 'html']
