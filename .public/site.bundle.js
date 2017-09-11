@@ -9785,7 +9785,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var title = "Wiley Hilton";
+var title = "Wiley Hilton",
+    subtitle = "Website developer / Technomancer";
 
 var Splash = function (_React$Component) {
     _inherits(Splash, _React$Component);
@@ -9802,10 +9803,10 @@ var Splash = function (_React$Component) {
             var _this2 = this;
 
             var changeColor = function changeColor(index) {
-                _this2.refs["titleLetter" + index].className += " colored";
+                _this2.refs["titleLetter" + index].className += " transitioned";
                 if (title.length > index + 1) window.setTimeout(function () {
                     return changeColor(index + 1);
-                }, 100);
+                }, 75);else _this2.refs.subtitle.className += " transitioned";
             };
 
             changeColor(0);
@@ -9817,7 +9818,7 @@ var Splash = function (_React$Component) {
 
             window.setTimeout(function () {
                 return _this3.colorName();
-            }, 1000);
+            }, 500);
         }
     }, {
         key: "render",
@@ -9829,7 +9830,7 @@ var Splash = function (_React$Component) {
                     "div",
                     null,
                     React.createElement(
-                        "span",
+                        "div",
                         { className: "title" },
                         function () {
                             var formattedTitle = [];
@@ -9843,6 +9844,12 @@ var Splash = function (_React$Component) {
 
                             return formattedTitle;
                         }()
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "subtitle",
+                            ref: "subtitle" },
+                        subtitle
                     )
                 ),
                 React.createElement(
@@ -22629,7 +22636,7 @@ exports = module.exports = __webpack_require__(87)(undefined);
 
 
 // module
-exports.push([module.i, "@media all and (min-width: 1025px) and (max-width: 1399px) {\n  html {\n    font-size: 16px; } }\n\n@media all and (min-width: 1400px) {\n  html {\n    font-size: 18px; } }\n\n@font-face {\n  font-family: Suess;\n  src: url(" + __webpack_require__(190) + "); }\n\nbody {\n  margin: 0;\n  padding: 0;\n  overflow-x: hidden; }\n  body * {\n    font-size: 15px;\n    box-sizing: border-box; }\n\n.Splash {\n  width: 100%;\n  height: 100vh;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  position: relative;\n  background-image: url(" + __webpack_require__(191) + ");\n  font-family: Suess;\n  display: flex; }\n  .Splash > div {\n    flex: 1 1 1px;\n    text-shadow: -6px 7px 7px #073d3e;\n    font-size: 2.5rem;\n    background-color: transparent;\n    text-align: center;\n    padding: 20% 0;\n    cursor: default; }\n    .Splash > div .title {\n      font-size: 3.5rem;\n      text-stoke: 0.5px black;\n      -webkit-text-stroke: 0.5px black; }\n      .Splash > div .title > span {\n        font-size: inherit;\n        transition: color 1s;\n        -webkit-transition: color 1s; }\n      .Splash > div .title > span.colored {\n        color: #158392; }\n", ""]);
+exports.push([module.i, "@media all and (min-width: 1025px) and (max-width: 1399px) {\n  html {\n    font-size: 16px; } }\n\n@media all and (min-width: 1400px) {\n  html {\n    font-size: 18px; } }\n\n@font-face {\n  font-family: Suess;\n  src: url(" + __webpack_require__(190) + "); }\n\nbody {\n  margin: 0;\n  padding: 0;\n  overflow-x: hidden; }\n  body * {\n    font-size: 15px;\n    box-sizing: border-box; }\n\n.Splash {\n  width: 100%;\n  height: 100vh;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  position: relative;\n  background-image: url(" + __webpack_require__(191) + ");\n  font-family: Suess;\n  display: flex; }\n  .Splash > div {\n    flex: 1 1 1px;\n    text-shadow: -6px 7px 7px #073d3e;\n    font-size: 2.5rem;\n    background-color: transparent;\n    text-align: center;\n    padding: 20% 0;\n    cursor: default; }\n    .Splash > div .title {\n      font-size: 4rem;\n      text-stoke: 0.5px black;\n      -webkit-text-stroke: 0.5px black; }\n      .Splash > div .title > span {\n        font-size: inherit;\n        transition: color 1s;\n        -webkit-transition: color 1s; }\n      .Splash > div .title > span.transitioned {\n        color: #158392; }\n    .Splash > div .subtitle {\n      font-size: inherit;\n      opacity: 0;\n      transition: opacity 1s 250ms;\n      -webkit-transition: opacity 1s 250ms; }\n      .Splash > div .subtitle.transitioned {\n        opacity: 1; }\n", ""]);
 
 // exports
 
