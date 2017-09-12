@@ -1,16 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
-import Splash from './splash';
+import Menu from './menu/menu';
+import Splash from './splash/splash';
 
 require('./base.scss');
 
 class Base extends React.Component{
     render() {
         return(
-            <div className='MainArea'>
-                <Splash />
-            </div>
+            <MuiThemeProvider>
+                <div className='MainArea'>
+                    <Menu />
+                    <Splash />
+                </div>
+            </MuiThemeProvider>
         );
     }
 }
