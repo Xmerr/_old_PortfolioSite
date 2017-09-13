@@ -1,8 +1,10 @@
 import Game from 'material-ui/svg-icons/av/games';
 import Home from 'material-ui/svg-icons/action/home';
+import Mood from 'material-ui/svg-icons/social/mood';
 
 import Splash from '../splash/splash';
 import Breakout from '../games/breakout';
+import AboutMe from '../about/aboutMe';
 
 export default [
     {
@@ -61,6 +63,11 @@ export default [
         icon: <Home />,
         name: "Home",
         component: <Splash key="Splash" />
+    },
+    {
+        component: <AboutMe />,
+        name: "About Me",
+        icon: <Mood />
     },
     {
         component: <Breakout key="Breakout" />,

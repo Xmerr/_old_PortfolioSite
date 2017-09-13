@@ -1,7 +1,6 @@
 require('./splash.scss');
 
-const title = "Wiley Hilton",
-    subtitle = "Website developer";
+const title = "Wiley Hilton";
 
 class Splash extends React.Component{
     colorName() {
@@ -40,7 +39,7 @@ class Splash extends React.Component{
                     </div>
                     <div className="subtitle"
                         ref="subtitle">
-                        {subtitle}
+                        Website developer
                     </div>
                 </div>
                 <div>
