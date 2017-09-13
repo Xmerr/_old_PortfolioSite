@@ -43,4 +43,36 @@ body {
     * {
         box-sizing: border-box;
     }
+    
+    .Page{
+        & > span > div {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+    
+    /********************
+    Page Animation
+    ********************/
+    .pageChange-enter {
+        opacity: 0;
+        
+        &.pageChange-enter-active {
+            opacity: 1;
+            transition: opacity 500ms ease-in;
+        }
+    }
+    
+    .pageChange-leave {
+        opacity: 1;
+        
+        &.pageChange-leave-active{
+            opacity: 0;
+            transition: opacity 500ms ease-in;
+        }
+    }
+    /********************
+    Page Animation End
+    ********************/
 }

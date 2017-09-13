@@ -24,7 +24,7 @@ var path = require('path'),
         
         resolve: {
             alias: {
-                
+                '_redux': path.join(__dirname, 'content', '.redux')
             },
             extensions: ['.jsx', '.js', '.scss', '.jpeg', '.jpg', '.png', '.gif']
         },
