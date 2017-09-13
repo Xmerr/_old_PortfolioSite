@@ -1,7 +1,8 @@
-import Search from 'material-ui/svg-icons/action/search';
+import Game from 'material-ui/svg-icons/av/games';
 import Home from 'material-ui/svg-icons/action/home';
 
 import Splash from '../splash/splash';
+import Breakout from '../games/breakout';
 
 export default [
     {
@@ -62,9 +63,9 @@ export default [
         component: <Splash key="Splash" />
     },
     {
-        component: <div key="Test">Test</div>,
-        name: "Test",
-        icon: <Search />
+        component: <Breakout key="Breakout" />,
+        name: "Breakout",
+        icon: <Game />
     }, 
     /* {
         path: "http://www.google.com",
