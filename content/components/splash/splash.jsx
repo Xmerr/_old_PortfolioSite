@@ -1,12 +1,11 @@
+import data from '../data';
 require('./splash.scss');
-
-const title = "Wiley Hilton";
 
 class Splash extends React.Component{
     colorName() {
         var changeColor = index => {
             this.refs[`titleLetter${index}`].className += " transitioned";
-            if(title.length > index + 1)
+            if(data.title.length > index + 1)
                 window.setTimeout(() => changeColor(index+1), 75);
             else 
                 this.refs.subtitle.className += " transitioned";
@@ -23,24 +22,24 @@ class Splash extends React.Component{
         return (
             <div className="Splash">
                 <div>
-                    <div className="title">
+                    <h1 className="title">
                         {(()=>{
                             var formattedTitle = [];
-                            for(var i in title) {
+                            for(var i in data.title) {
                                 formattedTitle.push(
                                     <span key={i} ref={`titleLetter${i}`}>
-                                        {title[i]}
+                                        {data.title[i]}
                                     </span>
                                 );
                             }
                             
                             return formattedTitle;
                         })()}
-                    </div>
-                    <div className="subtitle"
+                    </h1>
+                    <h2 className="subtitle"
                         ref="subtitle">
-                        Website developer
-                    </div>
+                        {data.subtitle}
+                    </h2>
                 </div>
                 <div>
                     Why fit in when you're born to stand out?
