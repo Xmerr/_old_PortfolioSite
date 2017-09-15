@@ -1,11 +1,12 @@
 export default {
     title: "Wiley Hilton",
     subtitle: "Website Developer",
+    pitch: "Currently I'm a team lead at Simulation Technologies where I manage a team of developers using agile methodologies. Previously I was a tutor with Wyzant and a freelance developer. While I loved the team at SimTech, I'm ready to move on to something new.",
     
     details: [
         {
             name: "Personality Traits",
-            value: "Great attitude, enthusiastic about work and learning new tools, goal focused, excelent listener, persistant, self-confident, self-diciplined, and self-motivated."
+            value: "Great attitude, enthusiastic about work and learning new tools, goal focused, excellent listener, persistant, self-confident, self-diciplined, and self-motivated."
         },
         {
             name: "Ideals",
@@ -17,7 +18,7 @@ export default {
         },
         {
             name: "Flaws",
-            value: "When I get into my work I can easily lose focus on everything else. There seems to be a tunnel vision. Using this to my advantage I am able to research my issues with nearly 100% success rate."
+            value: "When I really get into my work I can easily lose focus on everything else (most notibly I lose track of time). Using this to my advantage I am able to research any issues with nearly 100% success rate."
         },
         {
             name: "Back Story",
@@ -216,6 +217,10 @@ export default {
         {
             name: "Martial Arts",
             value: 7
+        },
+        {
+            name: "Knitting",
+            value: 6
         }
     ],
 };
