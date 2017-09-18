@@ -1,10 +1,12 @@
 import Game from 'material-ui/svg-icons/av/games';
 import Home from 'material-ui/svg-icons/action/home';
 import Mood from 'material-ui/svg-icons/social/mood';
+import Contact from 'material-ui/svg-icons/communication/email';
 
 import Splash from '../splash/splash';
 import Breakout from '../games/breakout';
 import AboutMe from '../about/aboutMe';
+import ContactMe from '../contact/contactMe';
 
 export default [
     {
@@ -74,14 +76,9 @@ export default [
         name: "Breakout",
         icon: <Game />
     }, 
-    /* {
-        path: "http://www.google.com",
-        icon: <Search />
-    }, {
-        path: "http://www.youtube.com",
-        icon: <Video />
-    }, {
-        path: "http://www.google.com",
-        icon: <Search />
-    }*/
+    {
+        component: <ContactMe key="Contact Me" />,
+        name: "Contact Me",
+        icon: <Contact />
+    }
 ];
