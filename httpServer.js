@@ -16,6 +16,8 @@ module.export = (() => {
     var express = require('express'),
         app = express();
         
+    app.use(require('prerender-node'));
+        
     app.use('/public', express.static(path.join(__dirname, '.public'),{
         index: false,
         extensions: ['js', 'html']
