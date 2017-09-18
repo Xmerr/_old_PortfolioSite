@@ -15492,10 +15492,6 @@ exports.default = [{
     component: React.createElement(_breakout2.default, { key: 'Breakout' }),
     name: "Breakout",
     icon: React.createElement(_games2.default, null)
-}, {
-    component: React.createElement(_contactMe2.default, { key: 'Contact Me' }),
-    name: "Contact Me",
-    icon: React.createElement(_email2.default, null)
 }];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 

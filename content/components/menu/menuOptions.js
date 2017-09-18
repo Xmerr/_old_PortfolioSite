@@ -76,9 +76,9 @@ export default [
         name: "Breakout",
         icon: <Game />
     }, 
-    {
+    /*{
         component: <ContactMe key="Contact Me" />,
         name: "Contact Me",
         icon: <Contact />
-    }
+    }*/
 ];
