@@ -14964,348 +14964,8 @@ exports.default = ContactMe;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 185 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(React) {
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _gameScreen = __webpack_require__(186);
-
-var _gameScreen2 = _interopRequireDefault(_gameScreen);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var settings = {
-    ball: {},
-    paddle: {
-        speed: 7,
-        height: 10,
-        margin: 10
-    },
-    bricks: {
-        rows: 3,
-        columns: 7,
-        padding: 10,
-        offsetTop: 30,
-        offsetSides: 30
-    }
-};
-
-var Breakout = function (_React$Component) {
-    _inherits(Breakout, _React$Component);
-
-    function Breakout() {
-        _classCallCheck(this, Breakout);
-
-        return _possibleConstructorReturn(this, (Breakout.__proto__ || Object.getPrototypeOf(Breakout)).apply(this, arguments));
-    }
-
-    _createClass(Breakout, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            var _this2 = this;
-
-            document.addEventListener("keydown", function (e) {
-                return _this2.userPress(e);
-            }, false);
-            document.addEventListener("keyup", function (e) {
-                return _this2.userRelease(e);
-            }, false);
-            this.reset();
-        }
-    }, {
-        key: "componentWillUnmount",
-        value: function componentWillUnmount() {
-            var _this3 = this;
-
-            document.removeEventListener("keydown", function (e) {
-                return _this3.userPress(e);
-            }, false);
-            document.removeEventListener("keyup", function (e) {
-                return _this3.userRelease(e);
-            }, false);
-            clearInterval(this.loop);
-        }
-    }, {
-        key: "userPress",
-        value: function userPress(e) {
-            if (e.keyCode === 39 || e.keyCode === 68) {
-                this.rightPress = true;
-            } else if (e.keyCode === 37 || e.keyCode === 65) {
-                this.leftPress = true;
-            }
-        }
-    }, {
-        key: "userRelease",
-        value: function userRelease(e) {
-            if (e.keyCode === 39 || e.keyCode === 68) {
-                this.rightPress = false;
-            } else if (e.keyCode === 37 || e.keyCode === 65) {
-                this.leftPress = false;
-            }
-        }
-    }, {
-        key: "reset",
-        value: function reset() {
-            clearInterval(this.loop);
-
-            this.canvasWidth = this.refs.game.canvas.width;
-            this.canvasHeight = this.refs.game.canvas.height;
-
-            this.x = this.canvasWidth / 2;
-            this.y = this.canvasHeight - 30;
-
-            settings.ball.speed = this.canvasHeight > this.canvasWidth ? this.canvasWidth * 0.005 : this.canvasHeight * 0.005;
-
-            this.dx = settings.ball.speed;
-            this.dy = -settings.ball.speed;
-            this.ballRadius = this.canvasHeight > this.canvasWidth ? this.canvasWidth * 0.02 : this.canvasHeight * 0.02;
-
-            settings.paddle.width = this.canvasWidth * 0.1;
-            this.paddleX = (this.canvasWidth - settings.paddle.width) / 2;
-
-            this.leftPress = false;
-            this.rightPress = false;
-
-            this.score = 0;
-
-            this.brickWidth = (this.canvasWidth - settings.bricks.columns * settings.bricks.padding - settings.bricks.offsetSides * 2) / settings.bricks.columns;
-            this.brickHeight = (this.canvasHeight / 4 - settings.bricks.rows * settings.bricks.padding - settings.bricks.offsetTop * 2) / settings.bricks.rows;
-
-            this.bricks = [];
-            for (var c = 0; c < settings.bricks.columns; c++) {
-                this.bricks.push([]);
-
-                for (var r = 0; r < settings.bricks.rows; r++) {
-                    this.bricks[c].push({ x: 0, y: 0, status: 1 });
-                }
-            }
-
-            this.start();
-        }
-    }, {
-        key: "start",
-        value: function start() {
-            var _this4 = this;
-
-            this.ctx = this.refs.game.canvas.getContext("2d");
-            this.loop = setInterval(function () {
-                return _this4.draw();
-            }, 10);
-        }
-    }, {
-        key: "draw",
-        value: function draw() {
-            this.ctx.clearRect(0, 0, this.refs.game.canvas.width, this.refs.game.canvas.height);
-            this.drawBall();
-            this.drawPaddle();
-            this.drawBricks();
-            this.drawScore();
-            this.collisionDetection();
-
-            if (this.score === settings.bricks.columns * settings.bricks.rows) {
-                clearInterval(this.loop);
-                alert("win");
-            }
-        }
-    }, {
-        key: "drawBall",
-        value: function drawBall() {
-            this.ctx.beginPath();
-            this.ctx.arc(this.x, this.y, this.ballRadius, 0, Math.PI * 2);
-            this.ctx.fillStyle = "#0095DD";
-            this.ctx.fill();
-            this.ctx.closePath();
-
-            this.x += this.dx;
-            this.y += this.dy;
-
-            if (this.x > this.canvasWidth - this.ballRadius || this.x < this.ballRadius) {
-                this.dx = -this.dx;
-            }
-
-            if (this.y < this.ballRadius) {
-                this.dy = -this.dy;
-            }
-
-            if (this.y > this.canvasHeight - this.ballRadius - settings.paddle.margin && this.x > this.paddleX && this.x < this.paddleX + settings.paddle.width) {
-                this.dy = -this.dy;
-            }
-
-            if (this.y > this.canvasHeight - this.ballRadius) {
-                clearInterval(this.loop);
-                alert('Game Over');
-            }
-        }
-    }, {
-        key: "drawPaddle",
-        value: function drawPaddle() {
-            if (this.leftPress) {
-                this.paddleX -= settings.paddle.speed;
-
-                if (this.paddleX < 0) {
-                    this.paddleX = 0;
-                }
-            }
-            if (this.rightPress) {
-                this.paddleX += settings.paddle.speed;
-
-                if (this.paddleX + settings.paddle.width > this.canvasWidth) {
-                    this.paddleX = this.canvasWidth - settings.paddle.width;
-                }
-            }
-
-            this.ctx.beginPath();
-            this.ctx.rect(this.paddleX, this.canvasHeight - settings.paddle.height - settings.paddle.margin, settings.paddle.width, settings.paddle.height);
-            this.ctx.fillStyle = "#0095DD";
-            this.ctx.fill();
-            this.ctx.closePath();
-        }
-    }, {
-        key: "drawBricks",
-        value: function drawBricks() {
-            for (var c = 0; c < settings.bricks.columns; c++) {
-                for (var r = 0; r < settings.bricks.rows; r++) {
-                    if (this.bricks[c][r].status === 1) {
-                        var brickX = c * (this.brickWidth + settings.bricks.padding) + settings.bricks.offsetSides;
-                        var brickY = r * (this.brickHeight + settings.bricks.padding) + settings.bricks.offsetTop;
-
-                        this.bricks[c][r].x = brickX;
-                        this.bricks[c][r].y = brickY;
-
-                        this.ctx.beginPath();
-                        this.ctx.rect(brickX, brickY, this.brickWidth, this.brickHeight);
-                        this.ctx.fillStyle = "#0095DD";
-                        this.ctx.fill();
-                        this.ctx.closePath();
-                    }
-                }
-            }
-        }
-    }, {
-        key: "collisionDetection",
-        value: function collisionDetection() {
-            for (var c = 0; c < settings.bricks.columns; c++) {
-                for (var r = 0; r < settings.bricks.rows; r++) {
-                    var b = this.bricks[c][r];
-
-                    if (b.status === 1 && this.x > b.x && this.x < b.x + this.brickWidth && this.y > b.y && this.y < b.y + this.brickHeight) {
-                        this.dy = -this.dy;
-                        b.status = 0;
-
-                        this.score++;
-                    }
-                }
-            }
-        }
-    }, {
-        key: "drawScore",
-        value: function drawScore() {
-            this.ctx.font = "16px Arial";
-            this.ctx.fillStyle = "#0095DD";
-            this.ctx.fillText("Score: " + this.score, 8, 20);
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _this5 = this;
-
-            return React.createElement(
-                "div",
-                { className: "Breakout" },
-                React.createElement(_gameScreen2.default, { reset: function reset() {
-                        return _this5.reset();
-                    },
-                    ref: "game" })
-            );
-        }
-    }]);
-
-    return Breakout;
-}(React.Component);
-
-exports.default = Breakout;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ }),
-/* 186 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(React) {
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-__webpack_require__(452);
-
-var GameScreen = function (_React$Component) {
-    _inherits(GameScreen, _React$Component);
-
-    function GameScreen() {
-        _classCallCheck(this, GameScreen);
-
-        return _possibleConstructorReturn(this, (GameScreen.__proto__ || Object.getPrototypeOf(GameScreen)).apply(this, arguments));
-    }
-
-    _createClass(GameScreen, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            var _this2 = this;
-
-            this.canvas = this.refs.canvas;
-
-            window.onresize = function () {
-                _this2.forceUpdate();
-
-                if (_this2.props.reset) _this2.props.reset();
-            };
-        }
-    }, {
-        key: "componentWillUnmount",
-        value: function componentWillUnmount() {
-            window.onresize = null;
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            return React.createElement(
-                "div",
-                { className: "GameScreen" },
-                React.createElement("canvas", { ref: "canvas", height: window.innerHeight * 0.7, width: window.innerWidth * 0.7 })
-            );
-        }
-    }]);
-
-    return GameScreen;
-}(React.Component);
-
-exports.default = GameScreen;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ }),
+/* 185 */,
+/* 186 */,
 /* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15421,7 +15081,7 @@ var _splash = __webpack_require__(61);
 
 var _splash2 = _interopRequireDefault(_splash);
 
-var _breakout = __webpack_require__(185);
+var _breakout = __webpack_require__(460);
 
 var _breakout2 = _interopRequireDefault(_breakout);
 
@@ -38741,20 +38401,7 @@ exports.push([module.i, "@media all and (max-width: 599px) {\n  html {\n    font
 
 
 /***/ }),
-/* 448 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(42)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, ".GameScreen {\n  background-color: black;\n  height: 100%; }\n  .GameScreen canvas {\n    margin: 15vh 15vw;\n    background-color: white; }\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 448 */,
 /* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38814,37 +38461,7 @@ if(false) {
 }
 
 /***/ }),
-/* 452 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(448);
-if(typeof content === 'string') content = [[module.i, content, '']];
-// Prepare cssTransformation
-var transform;
-
-var options = {}
-options.transform = transform
-// add the styles to the DOM
-var update = __webpack_require__(46)(content, options);
-if(content.locals) module.exports = content.locals;
-// Hot Module Replacement
-if(false) {
-	// When the styles change, update the <style> tags
-	if(!content.locals) {
-		module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./gameStyle.scss", function() {
-			var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/lib/loader.js!./gameStyle.scss");
-			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-			update(newContent);
-		});
-	}
-	// When the module is disposed, remove the <style> tags
-	module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
+/* 452 */,
 /* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38938,6 +38555,393 @@ module.exports = function() {
 	throw new Error("define cannot be used indirect");
 };
 
+
+/***/ }),
+/* 460 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(React) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _gameScreen = __webpack_require__(461);
+
+var _gameScreen2 = _interopRequireDefault(_gameScreen);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var settings = {
+    ball: {},
+    paddle: {
+        speed: 7,
+        height: 10,
+        margin: 10
+    },
+    bricks: {
+        rows: 3,
+        columns: 7,
+        padding: 10,
+        offsetTop: 30,
+        offsetSides: 30
+    }
+};
+
+var Breakout = function (_React$Component) {
+    _inherits(Breakout, _React$Component);
+
+    function Breakout() {
+        _classCallCheck(this, Breakout);
+
+        return _possibleConstructorReturn(this, (Breakout.__proto__ || Object.getPrototypeOf(Breakout)).apply(this, arguments));
+    }
+
+    _createClass(Breakout, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            document.addEventListener("keydown", function (e) {
+                return _this2.userPress(e);
+            }, false);
+            document.addEventListener("keyup", function (e) {
+                return _this2.userRelease(e);
+            }, false);
+            this.reset();
+        }
+    }, {
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+            var _this3 = this;
+
+            document.removeEventListener("keydown", function (e) {
+                return _this3.userPress(e);
+            }, false);
+            document.removeEventListener("keyup", function (e) {
+                return _this3.userRelease(e);
+            }, false);
+            clearInterval(this.loop);
+        }
+    }, {
+        key: "userPress",
+        value: function userPress(e) {
+            if (e.keyCode === 39 || e.keyCode === 68) {
+                this.rightPress = true;
+            } else if (e.keyCode === 37 || e.keyCode === 65) {
+                this.leftPress = true;
+            }
+        }
+    }, {
+        key: "userRelease",
+        value: function userRelease(e) {
+            if (e.keyCode === 39 || e.keyCode === 68) {
+                this.rightPress = false;
+            } else if (e.keyCode === 37 || e.keyCode === 65) {
+                this.leftPress = false;
+            }
+        }
+    }, {
+        key: "reset",
+        value: function reset() {
+            clearInterval(this.loop);
+
+            this.canvasWidth = this.refs.game.canvas.width;
+            this.canvasHeight = this.refs.game.canvas.height;
+
+            this.x = this.canvasWidth / 2;
+            this.y = this.canvasHeight - 30;
+
+            settings.ball.speed = this.canvasHeight > this.canvasWidth ? this.canvasWidth * 0.005 : this.canvasHeight * 0.005;
+
+            this.dx = settings.ball.speed;
+            this.dy = -settings.ball.speed;
+            this.ballRadius = this.canvasHeight > this.canvasWidth ? this.canvasWidth * 0.02 : this.canvasHeight * 0.02;
+
+            settings.paddle.width = this.canvasWidth * 0.1;
+            this.paddleX = (this.canvasWidth - settings.paddle.width) / 2;
+
+            this.leftPress = false;
+            this.rightPress = false;
+
+            this.score = 0;
+
+            this.brickWidth = (this.canvasWidth - settings.bricks.columns * settings.bricks.padding - settings.bricks.offsetSides * 2) / settings.bricks.columns;
+            this.brickHeight = (this.canvasHeight / 4 - settings.bricks.rows * settings.bricks.padding - settings.bricks.offsetTop * 2) / settings.bricks.rows;
+
+            this.bricks = [];
+            for (var c = 0; c < settings.bricks.columns; c++) {
+                this.bricks.push([]);
+
+                for (var r = 0; r < settings.bricks.rows; r++) {
+                    this.bricks[c].push({ x: 0, y: 0, status: 1 });
+                }
+            }
+
+            this.start();
+        }
+    }, {
+        key: "start",
+        value: function start() {
+            var _this4 = this;
+
+            this.ctx = this.refs.game.canvas.getContext("2d");
+            this.loop = setInterval(function () {
+                return _this4.draw();
+            }, 10);
+        }
+    }, {
+        key: "draw",
+        value: function draw() {
+            this.ctx.clearRect(0, 0, this.refs.game.canvas.width, this.refs.game.canvas.height);
+            this.drawBall();
+            this.drawPaddle();
+            this.drawBricks();
+            this.drawScore();
+            this.collisionDetection();
+
+            if (this.score === settings.bricks.columns * settings.bricks.rows) {
+                clearInterval(this.loop);
+                alert("win");
+            }
+        }
+    }, {
+        key: "drawBall",
+        value: function drawBall() {
+            this.ctx.beginPath();
+            this.ctx.arc(this.x, this.y, this.ballRadius, 0, Math.PI * 2);
+            this.ctx.fillStyle = "#0095DD";
+            this.ctx.fill();
+            this.ctx.closePath();
+
+            this.x += this.dx;
+            this.y += this.dy;
+
+            if (this.x > this.canvasWidth - this.ballRadius || this.x < this.ballRadius) {
+                this.dx = -this.dx;
+            }
+
+            if (this.y < this.ballRadius) {
+                this.dy = -this.dy;
+            }
+
+            if (this.y > this.canvasHeight - this.ballRadius - settings.paddle.margin && this.x > this.paddleX && this.x < this.paddleX + settings.paddle.width) {
+                this.dy = -this.dy;
+            }
+
+            if (this.y > this.canvasHeight - this.ballRadius) {
+                clearInterval(this.loop);
+                alert('Game Over');
+            }
+        }
+    }, {
+        key: "drawPaddle",
+        value: function drawPaddle() {
+            if (this.leftPress) {
+                this.paddleX -= settings.paddle.speed;
+
+                if (this.paddleX < 0) {
+                    this.paddleX = 0;
+                }
+            }
+            if (this.rightPress) {
+                this.paddleX += settings.paddle.speed;
+
+                if (this.paddleX + settings.paddle.width > this.canvasWidth) {
+                    this.paddleX = this.canvasWidth - settings.paddle.width;
+                }
+            }
+
+            this.ctx.beginPath();
+            this.ctx.rect(this.paddleX, this.canvasHeight - settings.paddle.height - settings.paddle.margin, settings.paddle.width, settings.paddle.height);
+            this.ctx.fillStyle = "#0095DD";
+            this.ctx.fill();
+            this.ctx.closePath();
+        }
+    }, {
+        key: "drawBricks",
+        value: function drawBricks() {
+            for (var c = 0; c < settings.bricks.columns; c++) {
+                for (var r = 0; r < settings.bricks.rows; r++) {
+                    if (this.bricks[c][r].status === 1) {
+                        var brickX = c * (this.brickWidth + settings.bricks.padding) + settings.bricks.offsetSides;
+                        var brickY = r * (this.brickHeight + settings.bricks.padding) + settings.bricks.offsetTop;
+
+                        this.bricks[c][r].x = brickX;
+                        this.bricks[c][r].y = brickY;
+
+                        this.ctx.beginPath();
+                        this.ctx.rect(brickX, brickY, this.brickWidth, this.brickHeight);
+                        this.ctx.fillStyle = "#0095DD";
+                        this.ctx.fill();
+                        this.ctx.closePath();
+                    }
+                }
+            }
+        }
+    }, {
+        key: "collisionDetection",
+        value: function collisionDetection() {
+            for (var c = 0; c < settings.bricks.columns; c++) {
+                for (var r = 0; r < settings.bricks.rows; r++) {
+                    var b = this.bricks[c][r];
+
+                    if (b.status === 1 && this.x > b.x && this.x < b.x + this.brickWidth && this.y > b.y && this.y < b.y + this.brickHeight) {
+                        this.dy = -this.dy;
+                        b.status = 0;
+
+                        this.score++;
+                    }
+                }
+            }
+        }
+    }, {
+        key: "drawScore",
+        value: function drawScore() {
+            this.ctx.font = "16px Arial";
+            this.ctx.fillStyle = "#0095DD";
+            this.ctx.fillText("Score: " + this.score, 8, 20);
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this5 = this;
+
+            return React.createElement(
+                "div",
+                { className: "Breakout" },
+                React.createElement(_gameScreen2.default, { reset: function reset() {
+                        return _this5.reset();
+                    },
+                    ref: "game" })
+            );
+        }
+    }]);
+
+    return Breakout;
+}(React.Component);
+
+exports.default = Breakout;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ }),
+/* 461 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(React) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+__webpack_require__(463);
+
+var GameScreen = function (_React$Component) {
+    _inherits(GameScreen, _React$Component);
+
+    function GameScreen() {
+        _classCallCheck(this, GameScreen);
+
+        return _possibleConstructorReturn(this, (GameScreen.__proto__ || Object.getPrototypeOf(GameScreen)).apply(this, arguments));
+    }
+
+    _createClass(GameScreen, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            this.canvas = this.refs.canvas;
+
+            window.onresize = function () {
+                _this2.forceUpdate();
+
+                if (_this2.props.reset) _this2.props.reset();
+            };
+        }
+    }, {
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+            window.onresize = null;
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return React.createElement(
+                "div",
+                { className: "GameScreen" },
+                React.createElement("canvas", { ref: "canvas", height: window.innerHeight * 0.7, width: window.innerWidth * 0.7 })
+            );
+        }
+    }]);
+
+    return GameScreen;
+}(React.Component);
+
+exports.default = GameScreen;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ }),
+/* 462 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(42)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, ".GameScreen {\n  background-color: black;\n  height: 100%; }\n  .GameScreen canvas {\n    margin: 15vh 15vw;\n    background-color: white; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 463 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(462);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(46)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/sass-loader/lib/loader.js!./gameStyle.scss", function() {
+			var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/sass-loader/lib/loader.js!./gameStyle.scss");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

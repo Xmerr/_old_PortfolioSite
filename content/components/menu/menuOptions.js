@@ -4,7 +4,7 @@ import Mood from 'material-ui/svg-icons/social/mood';
 import Contact from 'material-ui/svg-icons/communication/email';
 
 import Splash from '../splash/splash';
-import Breakout from '../games/breakout';
+import Breakout from '../games/Breakout/breakout';
 import AboutMe from '../about/aboutMe';
 import ContactMe from '../contact/contactMe';
 
