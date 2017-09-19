@@ -47,6 +47,13 @@ class AboutMe extends React.Component{
                                     </h5>
                                 </div>
                                 {data.skills.sort((a, b) => {
+                                    if(a.value < b.value) {
+                                        return 1;
+                                    }
+                                    if(a.value > b.value) {
+                                        return -1;
+                                    }
+                                    
                                     if(a.name < b.name) {
                                         return -1;
                                     }

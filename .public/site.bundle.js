@@ -17998,6 +17998,13 @@ var AboutMe = function (_React$Component) {
                                     )
                                 ),
                                 _data2.default.skills.sort(function (a, b) {
+                                    if (a.value < b.value) {
+                                        return 1;
+                                    }
+                                    if (a.value > b.value) {
+                                        return -1;
+                                    }
+
                                     if (a.name < b.name) {
                                         return -1;
                                     }
