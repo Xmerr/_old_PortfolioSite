@@ -14,7 +14,8 @@ process.env = {
 
 module.export = (() => {
     var express = require('express'),
-        app = express();
+        app = express(),
+        socketFiles = require('./socketFiles.js');
         
     app.use(require('prerender-node'));
         
@@ -27,6 +28,14 @@ module.export = (() => {
        res.sendFile(path.join(__dirname + '/index.html'));
     });
     
-    app.listen(process.env.port);
+    var server = app.listen(process.env.port);
+    var io = require('socket.io')(server);
+    
+    io.on('connection', function(socket){
+        socket.clientData = [];
+        socket.clientData[socket.handshake.issued] = {};
+        socketFiles(socket);
+    });
+    
     console.log(`website listening on port ${process.env.port}`);
 })();

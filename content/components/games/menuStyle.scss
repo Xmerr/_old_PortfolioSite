@@ -1,4 +1,9 @@
 @font-face {
+    font-family: guessThatNumber;
+    src: url('./GuessThatNumber/font.ttf');
+}
+
+@font-face {
     font-family: breakout;
     src: url('./Breakout/font.ttf');
 }
@@ -9,7 +14,8 @@
     align-items: center;
     justify-content: space-around;
     
-    .title {
+    .controls {
+        display: flex;
         position: absolute;
         left: 0;
         right: 0;
@@ -18,10 +24,32 @@
         vertical-align: middle;
         transform: translateY(-50%);
         
-        h3 {
-            font-size: 5em;
-            &.Breakout {
-                font-family: breakout;    
+        & > * {
+            flex: 1 1 1px;    
+        }
+        
+        .leftArrow {
+            background-color: pink;
+            cursor: pointer;
+        }
+        
+        .rightArrow {
+            background-color: blue;
+            cursor: pointer;
+        }
+        
+        .title {
+            h3 {
+                font-size: 5em;
+                font-weight: normal;
+                
+                &.gtn {
+                    font-family: guessThatNumber;
+                }
+                
+                &.bo {
+                    font-family: breakout;    
+                }
             }
         }
     }

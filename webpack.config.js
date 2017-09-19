@@ -10,7 +10,15 @@ var path = require('path'),
                 React: 'react',
                 ReactDOM: 'react-dom',
                 PropTypes: 'prop-types'
-            })
+            }),
+            /*
+            new webpack.DefinePlugin({
+              'process.env': {
+                NODE_ENV: JSON.stringify('production')
+              }
+            }),
+            new webpack.optimize.UglifyJsPlugin()
+            */
         ],
         
         entry: {

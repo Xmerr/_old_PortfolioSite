@@ -5,7 +5,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 import Menu from './menu/menu';
-import Splash from './splash/splash';
 import Page from './page';
 import app from '_redux/reducers';
 
@@ -15,6 +14,15 @@ import app from '_redux/reducers';
 const store = createStore(app);
 /*********************
  * Redux Setup End
+*********************/
+
+/*********************
+ * Socket.IO
+*********************/
+import socket from 'socket.io-client';
+global.io = socket();
+/*********************
+ * Socket.IO End
 *********************/
 
 require('./base.scss');
