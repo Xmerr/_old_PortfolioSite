@@ -20,12 +20,28 @@ const store = createStore(app);
 require('./base.scss');
 
 class Base extends React.Component{
+    constructor(props){
+        super(props);
+        
+        this.state = {};
+        
+        global.toggleMenu = () => {
+            this.setState({hideMenu: !this.state.hideMenu});
+        };
+    }
+    
     render() {
         return(
             <Provider store={store}>
                 <MuiThemeProvider>
                     <div className='MainArea'>
-                        <Menu />
+                        {(()=>{
+                            if(!this.state.hideMenu) {
+                                return (
+                                    <Menu />
+                                );
+                            }
+                        })()}
                         <Page />
                     </div>
                 </MuiThemeProvider>

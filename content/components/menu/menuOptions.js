@@ -4,7 +4,7 @@ import Mood from 'material-ui/svg-icons/social/mood';
 import Contact from 'material-ui/svg-icons/communication/email';
 
 import Splash from '../splash/splash';
-import Breakout from '../games/Breakout/breakout';
+import GameMenu from '../games/menu';
 import AboutMe from '../about/aboutMe';
 import ContactMe from '../contact/contactMe';
 
@@ -72,8 +72,8 @@ export default [
         icon: <Mood />
     },
     {
-        component: <Breakout key="Breakout" />,
-        name: "Breakout",
+        component: <GameMenu key="GameMenu" />,
+        name: "Games",
         icon: <Game />
     }, 
     /*{

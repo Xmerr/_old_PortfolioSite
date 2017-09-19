@@ -1,0 +1,28 @@
+@font-face {
+    font-family: breakout;
+    src: url('./Breakout/font.ttf');
+}
+
+.GameMenu {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+    .title {
+        position: absolute;
+        left: 0;
+        right: 0;
+        text-align: center;
+        top: 50%;
+        vertical-align: middle;
+        transform: translateY(-50%);
+        
+        h3 {
+            font-size: 5em;
+            &.Breakout {
+                font-family: breakout;    
+            }
+        }
+    }
+}
