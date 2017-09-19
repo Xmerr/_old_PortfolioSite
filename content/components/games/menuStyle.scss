@@ -4,6 +4,11 @@
 }
 
 @font-face {
+    font-family: hangman;
+    src: url('./Hangman/font.ttf');
+}
+
+@font-face {
     font-family: breakout;
     src: url('./Breakout/font.ttf');
 }
@@ -51,6 +56,10 @@
                 
                 &.gtn {
                     font-family: guessThatNumber;
+                }
+                
+                &.hm {
+                    font-family: hangman;
                 }
                 
                 &.bo {
