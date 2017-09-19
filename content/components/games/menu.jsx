@@ -1,6 +1,10 @@
-import gameList from './games';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import LeftArrow from 'material-ui/svg-icons/navigation/arrow-back';
+import RightArrow from 'material-ui/svg-icons/navigation/arrow-forward';
 
+import gameList from './games';
 require('./menuStyle');
+
 class GameMenu extends React.Component {
     constructor(props) {
         super(props);
@@ -27,10 +31,17 @@ class GameMenu extends React.Component {
         this.setState({playing: true});
     }
     
+    stopPlaying() {
+        this.setState({playing: false});
+    }
+    
     render() {
         if(this.state.playing) {
             return (
                 <div className="Game">
+                    <FloatingActionButton className="backButton" onTouchTap={() => this.stopPlaying()}>
+                        <LeftArrow />
+                    </FloatingActionButton>
                     {
                         gameList[this.state.game].Component()
                     }
@@ -47,7 +58,9 @@ class GameMenu extends React.Component {
                     </video>
                     
                     <div className="controls">
-                        <div className="leftArrow" onTouchTap={() => this.changeGame()} />
+                        <div className="leftArrow arrow" onTouchTap={() => this.changeGame()}>
+                            <LeftArrow />
+                        </div>
                         
                         <div className="title">
                             <h3 className={gameList[this.state.game].className}>
@@ -58,7 +71,9 @@ class GameMenu extends React.Component {
                             </button>
                         </div>
                         
-                        <div className="rightArrow" onTouchTap={() => this.changeGame(true)} />
+                        <div className="rightArrow arrow" onTouchTap={() => this.changeGame(true)}>
+                            <RightArrow />
+                        </div>
                     </div>
                 </div>
             </div>

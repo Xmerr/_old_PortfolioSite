@@ -8,6 +8,14 @@
     src: url('./Breakout/font.ttf');
 }
 
+.Game {
+    .backButton {
+        position: absolute;
+        top: 15vh;
+        left: 10vw;
+    }
+}
+
 .GameMenu {
     background-color: black;
     display: flex;
@@ -23,19 +31,23 @@
         top: 50%;
         vertical-align: middle;
         transform: translateY(-50%);
-        
-        & > * {
-            flex: 1 1 1px;    
-        }
+        align-items: center;
+        justify-content: space-around;
         
         .leftArrow {
-            background-color: pink;
-            cursor: pointer;
         }
         
         .rightArrow {
-            background-color: blue;
+        }
+        
+        .arrow {
             cursor: pointer;
+            
+            svg {
+                height: 20vh !important;
+                width: 30vw !important;
+                color: white !important;
+            }
         }
         
         .title {
