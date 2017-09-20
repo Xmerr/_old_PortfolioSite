@@ -45,6 +45,8 @@
             .subtitle {
                 font-size: inherit;
                 opacity: 0;
+                color: $accentColor;
+                margin: 0;
                 
                 transition: opacity 3s 250ms;
                 -webkit-transition: opacity 3s 250ms;

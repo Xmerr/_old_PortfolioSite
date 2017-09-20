@@ -1,4 +1,4 @@
-var Avatar = require('../../images/avatar');
+var Avatar = require('../../images/avatar.jpg');
 import Paper from 'material-ui/Paper';
 
 import data from '../data';
