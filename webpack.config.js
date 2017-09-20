@@ -4,21 +4,13 @@ var path = require('path'),
 (function () {
     "use strict";
     
-    module.exports = {
+    var config = {
         plugins: [
             new webpack.ProvidePlugin({
                 React: 'react',
                 ReactDOM: 'react-dom',
                 PropTypes: 'prop-types'
             }),
-            /*
-            new webpack.DefinePlugin({
-              'process.env': {
-                NODE_ENV: JSON.stringify('production')
-              }
-            }),
-            new webpack.optimize.UglifyJsPlugin()
-            */
         ],
         
         entry: {
@@ -70,4 +62,20 @@ var path = require('path'),
             ]
         }
     };
+    
+    if(process.env.NODE_ENV == 1) {
+        console.log('running production webpack');
+        config.plugins.push(
+            new webpack.DefinePlugin({
+              'process.env': {
+                NODE_ENV: JSON.stringify('production')
+              }
+            })
+        );
+        config.plugins.push(
+            new webpack.optimize.UglifyJsPlugin()
+        );
+    }
+    
+    module.exports = config;
 }());

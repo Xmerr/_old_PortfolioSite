@@ -4,7 +4,8 @@
   "description": "",
   "main": "httpServer.js",
   "scripts": {
-    "build:dev": "webpack --config webpack.config.js --watch"
+    "build:dev": "NODE_ENV=0 webpack --config webpack.config.js --watch",
+    "build:prod": "NODE_ENV=1 webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
