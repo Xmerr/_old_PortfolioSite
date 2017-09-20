@@ -10,3 +10,6 @@
 [submodule "content/components/games/Breakout"]
 	path = content/components/games/Breakout
 	url = https://www.github.com/xmerr/Breakout
+[submodule "content/components/games/TicTacToe"]
+	path = content/components/games/TicTacToe
+	url = https://www.github.com/Xmerr/TicTacToe
