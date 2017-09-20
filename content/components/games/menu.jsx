@@ -11,7 +11,8 @@ class GameMenu extends React.Component {
         
         this.state = {
             game: 0,
-            playing: false
+            playing: false,
+            key: 0
         };
     }
     
@@ -35,6 +36,10 @@ class GameMenu extends React.Component {
         this.setState({playing: false});
     }
     
+    resetGame() {
+        this.setState({key: ++this.state.key});
+    }
+    
     render() {
         if(this.state.playing) {
             return (
@@ -43,7 +48,7 @@ class GameMenu extends React.Component {
                         <LeftArrow />
                     </FloatingActionButton>
                     {
-                        gameList[this.state.game].Component()
+                        gameList[this.state.game].Component({key: this.state.key, reset: () => this.resetGame()})
                     }
                 </div>
             );
@@ -66,7 +71,7 @@ class GameMenu extends React.Component {
                             <h3 className={gameList[this.state.game].className}>
                                 {gameList[this.state.game].name}
                             </h3>
-                            <button onTouchTap={()=>this.play()}>
+                            <button onTouchTap={() => this.play()}>
                                 Play Now
                             </button>
                         </div>

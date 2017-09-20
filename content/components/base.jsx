@@ -25,6 +25,14 @@ global.io = socket();
  * Socket.IO End
 *********************/
 
+/*********************
+ * Sweet Alert
+*********************/
+require('sweetalert/dist/sweetalert.css');
+/*********************
+ * Sweet Alert
+*********************/
+
 require('./base.scss');
 
 class Base extends React.Component{

@@ -54,10 +54,6 @@ body {
     
     .Page{
         & > span > div {
-            position: absolute;
-            top: 0;
-            left: 0;
-            
             width: 100%;
             min-height: 100%;
         }
@@ -66,6 +62,12 @@ body {
     /********************
     Page Animation
     ********************/
+    .pageChange {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
     .pageChange-enter {
         opacity: 0;
         
