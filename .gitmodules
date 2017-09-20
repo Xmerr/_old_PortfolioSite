@@ -1,0 +1,6 @@
+[submodule "Hangman"]
+	path = Hangman
+	url = https://www.github.com/xmerr/Hangman
+[submodule "content/components/games/Hangman"]
+	path = content/components/games/Hangman
+	url = https://www.github.com/xmerr/Hangman
