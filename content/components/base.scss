@@ -69,6 +69,7 @@ body {
     }
     
     .pageChange-enter {
+        @extend .pageChange;
         opacity: 0;
         
         &.pageChange-enter-active {
@@ -78,6 +79,7 @@ body {
     }
     
     .pageChange-leave {
+        @extend .pageChange;
         opacity: 1;
         
         &.pageChange-leave-active{

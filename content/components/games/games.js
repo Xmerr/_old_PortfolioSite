@@ -4,6 +4,9 @@ import GuessThatNumberPreview from './GuessThatNumber/preview.mp4';
 import Hangman from './Hangman/game';
 import HangmanPreview from './Hangman/preview.mp4';
 
+import TicTacToe from './TicTacToe/game';
+import TicTacToePreview from './TicTacToe/preview.mp4';
+
 import Breakout from './Breakout/game';
 import BreakoutPreview from './Breakout/preview.mp4';
 
@@ -19,6 +22,12 @@ export default [
         name: "Hangman",
         Component: props => <Hangman {...props} />,
         Preview: HangmanPreview
+    },
+    {
+        className: "ttt",
+        name: "Tic-Tac-Toe",
+        Component: props => <TicTacToe {...props} />,
+        Preview: TicTacToePreview
     },
     {
         className: "bo",

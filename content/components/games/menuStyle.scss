@@ -9,6 +9,11 @@
 }
 
 @font-face {
+    font-family: tictactoe;
+    src: url('./TicTacToe/font.ttf');
+}
+
+@font-face {
     font-family: breakout;
     src: url('./Breakout/font.ttf');
 }
@@ -60,6 +65,10 @@
                 
                 &.hm {
                     font-family: hangman;
+                }
+                
+                &.ttt {
+                    font-family: tictactoe;
                 }
                 
                 &.bo {
