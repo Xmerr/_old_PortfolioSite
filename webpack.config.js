@@ -52,11 +52,11 @@ var path = require('path'),
                         }
                 },
                 { 
-                    test: /\.jpeg$|\.jpg$|\.webp$/, 
-                    loader: "url-loader" 
+                    test: /\.(gif|jpg|jpeg|png)$/,
+                    loader: ['url-loader', 'img-loader']
                 },
                 { 
-                    test: /\.(png|woff|woff2|otf|eot|ttf|svg|mp4)$/,
+                    test: /\.(woff|woff2|otf|eot|ttf|svg|mp4)$/,
                     loader: 'url-loader'
                 }
             ]

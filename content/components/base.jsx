@@ -21,6 +21,8 @@ const store = createStore(app);
 *********************/
 import socket from 'socket.io-client';
 global.io = socket();
+
+global.io.on('console', msg => console.log(msg));
 /*********************
  * Socket.IO End
 *********************/
