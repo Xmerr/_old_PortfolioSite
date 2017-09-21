@@ -78,3 +78,37 @@
         }
     }
 }
+
+.StartTimer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    z-index: 5000;
+    
+    background-color: rgba(155, 155, 155, 0.35);
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    
+    .timer {
+        border-radius: 50%;
+        background-color: gray;
+        box-shadow: 3px 3px 17px #343434;
+        
+        width: 8vw;
+        height: 8vw;
+        line-height: calc(8vw - 20px);
+        
+        text-align: center;
+        font-size: 3rem;
+        color: white;
+        
+        border: 10px groove white;
+        border-bottom-style: ridge;
+        border-right-style: ridge;
+    }
+}

@@ -25,7 +25,7 @@ export default [
     },
     {
         className: "ttt",
-        name: "Impossible Tic-Tac-Toe",
+        name: "Tic-Tac-Toe",
         Component: props => <TicTacToe {...props} />,
         Preview: TicTacToePreview
     },
