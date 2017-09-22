@@ -60,8 +60,12 @@ body {
     
     .Page{
         & > span > div {
-            width: 100%;
-            min-height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            
+            width: 100vw;
+            min-height: 100vh;
         }
     }
     
@@ -82,29 +86,23 @@ body {
     /********************
     Page Animation
     ********************/
-    .pageChange {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-    
     .pageChange-enter {
-        @extend .pageChange;
-        opacity: 0;
-        
         &.pageChange-enter-active {
-            opacity: 1;
-            transition: opacity 500ms ease-in;
         }
     }
     
     .pageChange-leave {
-        @extend .pageChange;
         opacity: 1;
+        transform: scale(1);
+        transition: all 500ms ease-in;
+        transition-property: transform, margin;
         
         &.pageChange-leave-active{
-            opacity: 0;
-            transition: opacity 500ms ease-in;
+            transform: rotate(135deg);
+            transform-origin: right;
+            
+            margin-left: 20vw;
+            margin-top: -20vh;
         }
     }
     /********************
