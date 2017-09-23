@@ -57,8 +57,10 @@ class GameMenu extends React.Component {
         return (
             <div className="GameMenu">
                 <div>
-                    <video autoPlay loop>
-                        <source src={gameList[this.state.game].Preview} type="video/mp4" />
+                    <video autoPlay loop key={this.state.game}>
+                        <source src={gameList[this.state.game].Preview}
+                            type="video/mp4"
+                        />
                         Your browser does not support the video tag.
                     </video>
                     

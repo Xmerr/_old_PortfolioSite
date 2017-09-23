@@ -13,3 +13,6 @@
 [submodule "content/components/games/TicTacToe"]
 	path = content/components/games/TicTacToe
 	url = https://www.github.com/Xmerr/TicTacToe
+[submodule "content/scripts/pixi"]
+	path = content/scripts/pixi
+	url = https://github.com/pixijs/pixi.js
