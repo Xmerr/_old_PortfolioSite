@@ -10,6 +10,9 @@ import TicTacToePreview from './TicTacToe/preview.mp4';
 import Breakout from './Breakout/game';
 import BreakoutPreview from './Breakout/preview.mp4';
 
+import Pong from './Pong/game';
+import PongPreview from './Pong/preview.mp4';
+
 export default [
     {
         className: "gtn",
@@ -34,5 +37,11 @@ export default [
         name: "Breakout",
         Component: props => <Breakout {...props} />,
         Preview: BreakoutPreview
+    },
+    {
+        className: "p",
+        name: "Pong",
+        Component: props => <Pong {...props} />,
+        Preview: PongPreview
     }
 ];
