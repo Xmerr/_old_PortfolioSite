@@ -2,11 +2,11 @@ import { combineReducers } from 'redux';
 import { actions } from './actions';
 
 import Splash from '../components/splash/splash';
-import GameMenu from '../components/games/menu';
+import SpaceShooter from '../components/games/SpaceShooter/game';
 
 const component = (state = <Splash key="Splash" />, action) => {
     if(location.pathname.indexOf('testing') >= 0) {
-        state = <GameMenu key="gw" />;
+        state = <SpaceShooter key="gw" />;
     }
     switch (action.type) {
         case actions.CHANGE_COMPONENT:

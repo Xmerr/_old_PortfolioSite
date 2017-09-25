@@ -16,3 +16,6 @@
 [submodule "content/scripts/pixi"]
 	path = content/scripts/pixi
 	url = https://github.com/pixijs/pixi.js
+[submodule "content/components/games/SpaceShooter"]
+	path = content/components/games/SpaceShooter
+	url = https://www.github.com/xmerr/SpaceShooter
