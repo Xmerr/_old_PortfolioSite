@@ -32,8 +32,8 @@ class EndMessage extends React.Component {
     render() {
         return (
             <SweetAlert
-                show={this.state.win || this.state.lose}
-                title={`${this.state.win ? "You Won!" : "You Lost"}`}
+                show={this.state.win || this.state.lose || this.props.show}
+                title={`${this.props.message ? this.props.message : this.state.win ? "You Won!" : "You Lost"}`}
                 confirmButtonText="Restart"
                 onConfirm={() => this.reset()}
             />
