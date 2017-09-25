@@ -18,6 +18,11 @@
     src: url('./Breakout/font.ttf');
 }
 
+@font-face {
+    font-family: pong;
+    src: url('./Pong/font.ttf');
+}
+
 .Game {
     .backButton {
         position: absolute;
@@ -73,6 +78,10 @@
                 
                 &.bo {
                     font-family: breakout;    
+                }
+                
+                &.p {
+                    font-family: pong;
                 }
             }
         }
