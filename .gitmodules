@@ -19,3 +19,6 @@
 [submodule "content/components/games/SpaceShooter"]
 	path = content/components/games/SpaceShooter
 	url = https://www.github.com/xmerr/SpaceShooter
+[submodule "RPG-Journal"]
+	path = RPG-Journal
+	url = https://www.github.com/xmerr/RPG-Journal
