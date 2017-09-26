@@ -2,7 +2,7 @@
   "name": "xmer-portfolio-website",
   "version": "1.0.0",
   "description": "",
-  "main": "httpServer.js",
+  "main": "server.js",
   "scripts": {
     "build:dev": "NODE_ENV=0 webpack --config webpack.config.js --watch",
     "build:prod": "NODE_ENV=1 webpack --config webpack.config.js"

@@ -19,3 +19,6 @@
 [submodule "content/components/games/SpaceShooter"]
 	path = content/components/games/SpaceShooter
 	url = https://www.github.com/xmerr/SpaceShooter
+[submodule "content/components/games/Pong"]
+	path = content/components/games/Pong
+	url = https://github.com/Xmerr/Pong
