@@ -54,7 +54,7 @@ var path = require('path'),
                 },
                 { 
                     test: /\.(gif|jpg|jpeg|png)$/,
-                    loader: ['url-loader', 'img-loader']
+                    loader: 'url-loader'
                 },
                 { 
                     test: /\.(woff|woff2|otf|eot|ttf|svg|mp4)$/,

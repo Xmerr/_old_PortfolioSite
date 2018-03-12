@@ -71,11 +71,11 @@ export default [
         name: "About Me",
         icon: <Mood />
     },
-    {
+    /*{
         component: <GameMenu key="GameMenu" />,
         name: "Games",
         icon: <Game />
-    }, 
+    },*/ 
     /*{
         component: <ContactMe key="Contact Me" />,
         name: "Contact Me",
