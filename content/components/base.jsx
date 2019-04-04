@@ -1,38 +1,25 @@
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
-
-import Menu from './menu/menu';
-import Page from './page';
+/*********************
+ * Redux Setup End
+*********************/
+/*********************
+ * Socket.IO
+*********************/
+import socket from 'socket.io-client';
 import app from '_redux/reducers';
+import Page from './page';
+
 
 /*********************
  * Redux Setup
 *********************/
 const store = createStore(app);
-/*********************
- * Redux Setup End
-*********************/
-
-/*********************
- * Socket.IO
-*********************/
-import socket from 'socket.io-client';
 global.io = socket();
 
 global.io.on('console', msg => console.log(msg));
 /*********************
  * Socket.IO End
-*********************/
-
-/*********************
- * Sweet Alert
-*********************/
-require('sweetalert/dist/sweetalert.css');
-/*********************
- * Sweet Alert
 *********************/
 
 require('./base.scss');
@@ -51,18 +38,9 @@ class Base extends React.Component{
     render() {
         return(
             <Provider store={store}>
-                <MuiThemeProvider>
-                    <div className='MainArea'>
-                        {(()=>{
-                            if(!this.state.hideMenu) {
-                                return (
-                                    <Menu />
-                                );
-                            }
-                        })()}
-                        <Page />
-                    </div>
-                </MuiThemeProvider>
+                <div className='MainArea'>
+                    <Page />
+                </div>
             </Provider>
         );
     }

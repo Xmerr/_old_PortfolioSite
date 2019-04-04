@@ -1,12 +1,8 @@
-import Game from 'material-ui/svg-icons/av/games';
 import Home from 'material-ui/svg-icons/action/home';
 import Mood from 'material-ui/svg-icons/social/mood';
-import Contact from 'material-ui/svg-icons/communication/email';
-
-import Splash from '../splash/splash';
-import GameMenu from '../games/menu';
 import AboutMe from '../about/aboutMe';
-import ContactMe from '../contact/contactMe';
+import Splash from '../splash/splash';
+
 
 export default [
     {
@@ -70,15 +66,5 @@ export default [
         component: <AboutMe />,
         name: "About Me",
         icon: <Mood />
-    },
-    /*{
-        component: <GameMenu key="GameMenu" />,
-        name: "Games",
-        icon: <Game />
-    },*/ 
-    /*{
-        component: <ContactMe key="Contact Me" />,
-        name: "Contact Me",
-        icon: <Contact />
-    }*/
+    }
 ];

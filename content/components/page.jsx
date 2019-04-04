@@ -1,4 +1,3 @@
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { connect } from 'react-redux';
 
 class Page extends React.Component{
@@ -16,11 +15,7 @@ class Page extends React.Component{
     render(){
         return(
             <div className="Page">
-                <ReactCSSTransitionGroup transitionName="pageChange"
-                    transitionEnterTimeout={500}
-                    transitionLeaveTimeout={500}>
-                    {this.props.component}
-                </ReactCSSTransitionGroup>
+                {this.props.component}
             </div>
         );
     }
