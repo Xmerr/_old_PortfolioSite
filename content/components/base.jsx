@@ -10,7 +10,6 @@ import socket from 'socket.io-client';
 import app from '_redux/reducers';
 import Page from './page';
 
-
 /*********************
  * Redux Setup
 *********************/
