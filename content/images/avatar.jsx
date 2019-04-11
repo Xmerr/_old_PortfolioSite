@@ -1,5 +1,8 @@
-const flesh = "#f2c6af";
-const shadow= "#333";
+require('./Avatar.scss');
+
+const flesh ="#f2c6af";
+const shadow="#333";
+const shirt="#43a48a"
 
 const head = {
     radius: 200,
@@ -35,8 +38,10 @@ const nose = {
 
 const mouth = {
     x: head.x,
-    y: head.y + head.radius * 0.65
+    y: head.y + head.radius * 0.5,
+    radius: 150
 }
+mouth.y = mouth.y - mouth.radius / 2;
 
 // Calculated from consts
 hair.left = {
@@ -67,12 +72,25 @@ class Avatar extends React.Component {
         return (
             <svg className="Avatar" 
                 viewBox="0 0 600 600"
-                width="600" height="600">
-                <g preserveAspectRatio="xMidYMid meet">
+                preserveAspectRatio="xMidYMid meet"
+                style={this.props.style}
+            >
 
-                    {/*outline*/}       
-                    <circle cx="300" cy="300" r="300" fill="white" />
+                {/*
+                    Body
+                */}
+                <g>
+                    { /*Shirt*/ }
+                    <ellipse cx={head.x} cy={head.y + head.radius * 2} fill={shirt} rx={225} ry={230}/>
 
+                    {/* Neck */}
+                    <circle cx={head.x} cy={head.y + head.radius} r={head.radius / 3} fill={flesh} stroke="darkgray" strokeWidth="10"/>
+                </g>
+
+                {/*
+                    Face
+                */}
+                <g>
                     {/* Ears */}
                     <ellipse cx="300" cy="270" 
                         rx="220" ry="100" 
@@ -83,6 +101,10 @@ class Avatar extends React.Component {
 
                     {/* Head */}
                     <circle cx={head.x} cy={head.y} r={head.radius} fill={flesh} />
+
+                    {/* Mouth */}
+                    <circle cx={mouth.x} cy={mouth.y} r={mouth.radius} fill="black" />
+                    <ellipse cx={mouth.x} cy={mouth.y * 0.985} rx={mouth.radius * 1.05} ry={mouth.radius} fill={flesh} />
 
                     {/* Eyes */}
                     <circle cx={eyes.left.x} cy={eyes.left.y} r={eyes.radius} fill="black" />
@@ -104,16 +126,12 @@ class Avatar extends React.Component {
                         fill={hair.color}
                     />
 
-
                     {/* Nose */}
                     <circle cx={nose.x} cy={nose.y} r={nose.radius} fill="black" />
                     <circle cx={nose.x} cy={nose.y * 1.02} r={nose.radius} fill={flesh} />
 
                     <circle cx={nose.x - nose.radius * 0.5} cy={nose.y} r={nose.radius / 10} fill={shadow} />
                     <circle cx={nose.x + nose.radius * 0.5} cy={nose.y} r={nose.radius / 10} fill={shadow} />
-
-                    {/* Mouth */}
-                    <circle cx={mouth.x} cy={mouth.y} r={10} stroke="black" />
                 </g>
             </svg>
         )

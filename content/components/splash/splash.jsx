@@ -10,16 +10,18 @@ class Splash extends React.Component{
             <div className="Splash">
                 <div>
                     <h1 className="title">
-                        I'm Wiley
+                        I'm Wiley,
                     </h1>
                     <h2 className="subtitle">
                         a web developer and react specialist
                     </h2>
                 </div>
-                <Avatar style={{
-                    width: "500px",
-                    height: "500px"
-                }}/>
+                <div className="me">
+                    <Avatar style={{
+                        width: "75px",
+                        height: "75px"
+                    }}/>
+                </div>
                 <div className="earth">
                     <Land />
                 </div>

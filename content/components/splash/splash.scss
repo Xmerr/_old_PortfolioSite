@@ -20,19 +20,15 @@
         font-size: 2.5em;
         background-color: transparent;
         text-align: center;
+
+        color: $accentColor;
         
-        padding: 20% 0;
+        padding: 10%;
         
         cursor: default;
         
         .title {
             font-size: 2em;
-            
-            & > span {
-                font-size: inherit;
-                transition: color 1s;
-                -webkit-transition: color 1s;
-            }
         }
         
         .subtitle {
@@ -40,6 +36,11 @@
             margin: 0;
             font-weight: 100;
         }
+    }
+
+    & > div.me {
+        position: fixed;
+        top: 70px;
     }
 
     & > div.earth {
