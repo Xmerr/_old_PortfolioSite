@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { BrowserRouter as Router } from "react-router-dom";
+import Header from './header/header';
 
 class Page extends React.Component{
     constructor(props) {
@@ -14,8 +16,11 @@ class Page extends React.Component{
     
     render(){
         return(
-            <div className="Page">
-                {this.props.component}
+            <div className="Router">
+                <Router>
+                    {this.props.component}
+                </Router>
+                <Header />
             </div>
         );
     }

@@ -1,0 +1,24 @@
+@import '../variables.scss';
+
+.Header {
+    height: $headerHeight;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+
+    background-color: transparent;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+
+    & > * {
+        flex: 1 1 1px;
+    }
+    & > div.me {
+        flex-grow: 3;
+        display: flex;
+        justify-content: space-around;
+    }
+}

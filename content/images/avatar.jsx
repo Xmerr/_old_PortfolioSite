@@ -77,6 +77,11 @@ class Avatar extends React.Component {
             >
 
                 {/*
+                    Outline
+                */}
+                <circle cx="300" cy="300" fill="white" r="300" />
+
+                {/*
                     Body
                 */}
                 <g>

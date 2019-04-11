@@ -1,5 +1,4 @@
-import Avatar from '../../images/avatar';
-import Land from '../../images/land';
+import Land from '_images/land';
 require('./splash.scss');
 
 // Based on http://seanhalpin.io/
@@ -13,14 +12,8 @@ class Splash extends React.Component{
                         I'm Wiley,
                     </h1>
                     <h2 className="subtitle">
-                        a web developer and react specialist
+                        a front end web developer
                     </h2>
-                </div>
-                <div className="me">
-                    <Avatar style={{
-                        width: "75px",
-                        height: "75px"
-                    }}/>
                 </div>
                 <div className="earth">
                     <Land />

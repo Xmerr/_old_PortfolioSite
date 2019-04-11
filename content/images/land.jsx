@@ -22,7 +22,8 @@ class Land extends React.Component {
         return (
             <svg className="Land"
                 viewBox="0 0 800 300"
-                width="800px" height="300px">
+                preserveAspectRatio="xMidYMid meet"
+                style={this.props.style}>
 
                 <defs>
                     <linearGradient id="gradient-oval10" x1="429.5" y1="10" x2="429.5" y2="30" gradientUnits="userSpaceOnUse" >

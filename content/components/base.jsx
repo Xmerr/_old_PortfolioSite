@@ -1,21 +1,21 @@
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-/*********************
- * Redux Setup End
-*********************/
-/*********************
- * Socket.IO
-*********************/
 import socket from 'socket.io-client';
 import app from '_redux/reducers';
-import Page from './page';
+import Router from './router';
 
 /*********************
  * Redux Setup
 *********************/
 const store = createStore(app);
-global.io = socket();
+/*********************
+ * Redux Setup End
+*********************/
 
+/*********************
+ * Socket.IO
+*********************/
+global.io = socket();
 global.io.on('console', msg => console.log(msg));
 /*********************
  * Socket.IO End
@@ -38,7 +38,7 @@ class Base extends React.Component{
         return(
             <Provider store={store}>
                 <div className='MainArea'>
-                    <Page />
+                    <Router />
                 </div>
             </Provider>
         );
