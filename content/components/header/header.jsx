@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Avatar from '_images/avatar';
 require('./header.scss');
 
@@ -7,13 +7,17 @@ class Header extends React.Component {
         return (
             <div className='Header'>
                 <div className="me">
-                    <Avatar style={{
-                        height: "100%"
-                    }}/>
+                    <Link to="/">
+                        <Avatar style={{
+                            height: "100%"
+                        }}/>
+                    </Link>
                 </div>
                 <div />
                 <div>
-                    Link 1
+                    <Link to="/about">
+                        About Me
+                    </Link>
                 </div>
                 <div>
                     Link 2
@@ -26,16 +30,4 @@ class Header extends React.Component {
     }
 };
 
-Header.propTypes={
-};
-
-const mapStateToProps = state => {
-    return {
-    }
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-    }
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

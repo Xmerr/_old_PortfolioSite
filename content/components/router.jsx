@@ -1,6 +1,8 @@
-import { connect } from 'react-redux';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { AnimatedSwitch } from 'react-router-transition';
+import About from './about/about';
 import Header from './header/header';
+import Splash from './splash/splash';
 
 class Page extends React.Component{
     constructor(props) {
@@ -18,22 +20,20 @@ class Page extends React.Component{
         return(
             <div className="Router">
                 <Router>
-                    {this.props.component}
+                    <AnimatedSwitch
+                        atEnter={{ opacity: 0 }}
+                        atLeave={{ opacity: 0 }}
+                        atActive={{ opacity: 1 }}
+                        className="switch-wrapper"
+                    >
+                        <Route path="/about" component={About} />
+                        <Route path="/" component={Splash} />
+                    </AnimatedSwitch>
+                    <Header />
                 </Router>
-                <Header />
             </div>
         );
     }
 }
 
-const stateTo = state => {
-    return {
-        component: state.component
-    };
-};
-const dispatchTo = dispatch => {
-    return {
-    };
-};
-
-export default connect(stateTo, dispatchTo)(Page);
+export default Page;
