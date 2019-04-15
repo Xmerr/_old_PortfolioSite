@@ -70,75 +70,77 @@ hair.curl = {
 class Avatar extends React.Component {
     render() {
         return (
-            <svg className="Avatar" 
-                viewBox="0 0 600 600"
-                preserveAspectRatio="xMidYMid meet"
-                style={this.props.style}
-            >
+            <div className="Avatar">
+                <svg className="me" 
+                    viewBox="0 0 600 600"
+                    preserveAspectRatio="xMidYMid meet"
+                    style={this.props.style}
+                >
 
-                {/*
-                    Outline
-                */}
-                <circle cx="300" cy="300" fill="white" r="300" />
+                    {/*
+                        Outline
+                    */}
+                    <circle cx="300" cy="300" fill="white" r="300" />
 
-                {/*
-                    Body
-                */}
-                <g>
-                    { /*Shirt*/ }
-                    <ellipse cx={head.x} cy={head.y + head.radius * 2} fill={shirt} rx={225} ry={230}/>
+                    {/*
+                        Body
+                    */}
+                    <g>
+                        { /*Shirt*/ }
+                        <ellipse cx={head.x} cy={head.y + head.radius * 2} fill={shirt} rx={225} ry={230}/>
 
-                    {/* Neck */}
-                    <circle cx={head.x} cy={head.y + head.radius} r={head.radius / 3} fill={flesh} stroke="darkgray" strokeWidth="10"/>
-                </g>
+                        {/* Neck */}
+                        <circle cx={head.x} cy={head.y + head.radius} r={head.radius / 3} fill={flesh} stroke="darkgray" strokeWidth="10"/>
+                    </g>
 
-                {/*
-                    Face
-                */}
-                <g>
-                    {/* Ears */}
-                    <ellipse cx="300" cy="270" 
-                        rx="220" ry="100" 
-                        strokeWidth="30" 
-                        stroke={flesh}
-                        fill={shadow}
-                    />
+                    {/*
+                        Face
+                    */}
+                    <g>
+                        {/* Ears */}
+                        <ellipse cx="300" cy="270" 
+                            rx="220" ry="100" 
+                            strokeWidth="30" 
+                            stroke={flesh}
+                            fill={shadow}
+                        />
 
-                    {/* Head */}
-                    <circle cx={head.x} cy={head.y} r={head.radius} fill={flesh} />
+                        {/* Head */}
+                        <circle cx={head.x} cy={head.y} r={head.radius} fill={flesh} />
 
-                    {/* Mouth */}
-                    <circle cx={mouth.x} cy={mouth.y} r={mouth.radius} fill="black" />
-                    <ellipse cx={mouth.x} cy={mouth.y * 0.985} rx={mouth.radius * 1.05} ry={mouth.radius} fill={flesh} />
+                        {/* Mouth */}
+                        <circle cx={mouth.x} cy={mouth.y} r={mouth.radius} fill="black" />
+                        <ellipse cx={mouth.x} cy={mouth.y * 0.985} rx={mouth.radius * 1.05} ry={mouth.radius} fill={flesh} />
 
-                    {/* Eyes */}
-                    <circle cx={eyes.left.x} cy={eyes.left.y} r={eyes.radius} fill="black" />
-                    <circle cx={eyes.left.x} cy={eyes.left.y * 1.1} r={eyes.radius * 1.2} fill={flesh} />
+                        {/* Eyes */}
+                        <circle cx={eyes.left.x} cy={eyes.left.y} r={eyes.radius} fill="black" />
+                        <circle cx={eyes.left.x} cy={eyes.left.y * 1.1} r={eyes.radius * 1.2} fill={flesh} />
 
-                    <circle cx={eyes.right.x} cy={eyes.right.y} r={eyes.radius} fill="black" />
-                    <circle cx={eyes.right.x} cy={eyes.right.y * 1.1} r={eyes.radius * 1.2} fill={flesh} />
+                        <circle cx={eyes.right.x} cy={eyes.right.y} r={eyes.radius} fill="black" />
+                        <circle cx={eyes.right.x} cy={eyes.right.y * 1.1} r={eyes.radius * 1.2} fill={flesh} />
 
-                    {/* Hair */}
-                    <circle cx={hair.curl.x1} cy={hair.curl.y1} r="30" fill={hair.color} />
-                    <circle cx={hair.curl.x2} cy={hair.curl.y2} r="45" fill="white" />
+                        {/* Hair */}
+                        <circle cx={hair.curl.x1} cy={hair.curl.y1} r="30" fill={hair.color} />
+                        <circle cx={hair.curl.x2} cy={hair.curl.y2} r="45" fill="white" />
 
-                    <path
-                        d={`
-                            M ${hair.left.x},${hair.left.y} 
-                            A 200 200 0 0 1 ${hair.right.x} ${hair.right.y} 
-                            Z
-                        `}
-                        fill={hair.color}
-                    />
+                        <path
+                            d={`
+                                M ${hair.left.x},${hair.left.y} 
+                                A 200 200 0 0 1 ${hair.right.x} ${hair.right.y} 
+                                Z
+                            `}
+                            fill={hair.color}
+                        />
 
-                    {/* Nose */}
-                    <circle cx={nose.x} cy={nose.y} r={nose.radius} fill="black" />
-                    <circle cx={nose.x} cy={nose.y * 1.02} r={nose.radius} fill={flesh} />
+                        {/* Nose */}
+                        <circle cx={nose.x} cy={nose.y} r={nose.radius} fill="black" />
+                        <circle cx={nose.x} cy={nose.y * 1.02} r={nose.radius} fill={flesh} />
 
-                    <circle cx={nose.x - nose.radius * 0.5} cy={nose.y} r={nose.radius / 10} fill={shadow} />
-                    <circle cx={nose.x + nose.radius * 0.5} cy={nose.y} r={nose.radius / 10} fill={shadow} />
-                </g>
-            </svg>
+                        <circle cx={nose.x - nose.radius * 0.5} cy={nose.y} r={nose.radius / 10} fill={shadow} />
+                        <circle cx={nose.x + nose.radius * 0.5} cy={nose.y} r={nose.radius / 10} fill={shadow} />
+                    </g>
+                </svg>
+            </div>
         )
     }
 };

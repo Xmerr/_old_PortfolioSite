@@ -5,6 +5,7 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
+    text-align: center;
 
     background-color: transparent;
 
@@ -16,7 +17,8 @@
     & > * {
         flex: 1 1 1px;
     }
-    & > div.me {
+
+    & > div.Avatar {
         flex-grow: 3;
         display: flex;
         justify-content: space-around;

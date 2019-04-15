@@ -47,9 +47,21 @@ body {
         user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
     }
     
-    h1, h3, h5 {
+    h1, h2, h3, h4, h5 {
         margin: 0;
         padding: 0;
+    }
+
+    h1, h2 {
+        color: $accentColor;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.25rem;
     }
     
     h3 {
@@ -59,8 +71,10 @@ body {
     h5 {
         margin-top: 0.75em;
     }
-    
-    .Router{
+
+    a {
+        text-decoration: none;
+        color: inherit;
     }
 }
 

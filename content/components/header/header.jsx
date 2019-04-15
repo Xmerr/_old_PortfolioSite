@@ -6,13 +6,11 @@ class Header extends React.Component {
     render() {
         return (
             <div className='Header'>
-                <div className="me">
-                    <Link to="/">
-                        <Avatar style={{
-                            height: "100%"
-                        }}/>
-                    </Link>
-                </div>
+                <Link to="/">
+                    <Avatar style={{
+                        height: "100%"
+                    }}/>
+                </Link>
                 <div />
                 <div>
                     <Link to="/about">
@@ -20,10 +18,14 @@ class Header extends React.Component {
                     </Link>
                 </div>
                 <div>
-                    Link 2
+                    <Link to="/about">
+                        Work
+                    </Link>
                 </div>
                 <div>
-                    Link 3
+                    <Link to="/about">
+                        Notes
+                    </Link>
                 </div>
             </div>
         )
