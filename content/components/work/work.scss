@@ -1,0 +1,50 @@
+@import '../variables.scss';
+
+$colors: (
+    #f76160,
+    #7dcc93,
+    #31355b,
+    #f8c687
+);
+
+.Work {
+    & > div {
+        display: flex;
+        flex-direction: column;
+
+        min-height: calc(100vh - #{$headerHeight});
+
+        text-align: center;
+
+        @each $color in $colors {
+            &:nth-child(#{index($colors, $color)}n) {
+                background-color: $color;
+            }
+        }
+
+        img {
+            border-radius: 15px;
+            object-fit: contain;
+            max-height: 50vh;
+        }
+
+        & > * {
+            flex: 1;
+            margin-top: 25px;
+        }
+
+        * {
+            color: $offwhite;
+        }
+
+        .buttons {
+
+            a {
+                background-color: $accentColor;
+                padding: 0.5rem 5rem;
+                border-radius: 5px;
+                margin: 5px;
+            }
+        }
+    }
+}
