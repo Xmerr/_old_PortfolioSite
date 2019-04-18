@@ -74,7 +74,13 @@ body {
 
     a {
         text-decoration: none;
-        color: inherit;
+        color: $accentColor;
+        font-weight: bold;
+        font-size: 1.25rem;
+
+        &.active {
+            color: $accentColorDark;
+        }
     }
 }
 

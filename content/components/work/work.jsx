@@ -27,7 +27,7 @@ class Work extends React.Component {
                                     <a href={proj.link} target="_blank">
                                         visit
                                     </a>
-                                    <a href={proj.repo}>
+                                    <a href={proj.repo} target="_blank">
                                         github
                                     </a>
                                 </div>
