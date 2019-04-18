@@ -1,4 +1,4 @@
-require('./Avatar.scss');
+require('./avatar.scss');
 
 const flesh ="#f2c6af";
 const shadow="#333";

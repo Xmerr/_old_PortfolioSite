@@ -10,7 +10,7 @@ class Work extends React.Component {
                         return (
                             <div key={proj.title}>
                                 <div>
-                                    <img src={`${proj.link}/public/preview.PNG`} />
+                                    <img src={`${proj.link}/public/preview.png`} />
                                 </div>
                                 <div>
                                     <h1>
