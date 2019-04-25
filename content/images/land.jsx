@@ -22,7 +22,7 @@ class Land extends React.Component {
         return (
             <svg className="Land"
                 viewBox="0 0 800 300"
-                preserveAspectRatio="xMidYMid meet"
+                preserveAspectRatio="xMidYMax meet"
                 style={this.props.style}>
 
                 <defs>

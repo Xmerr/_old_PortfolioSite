@@ -11,7 +11,11 @@
     & > div {
         display: flex;
         flex-direction: column;
+
+        min-width: 75vw;
         width: 40rem;
+        max-width: 100vw;
+
         margin-left: auto;
         margin-right: auto;
 
