@@ -1,10 +1,17 @@
 var list = root => [
     {
-        title: "Avatar Craft",
+        title: "Avatar Craft (WIP)",
         link: `http://avatar.${root}`,
         repo: "https://github.com/Xmerr/AvatarCraft",
         type: "image crafting",
-        description: "A 100% client browser based method to create svg avatars."
+        description: "A 100% client browser based method to create svg avatars. Still a work in progress"
+    },
+    {
+        title: "Wooly Willy Online",
+        link: `http://willy.${root}`,
+        repo: "https://github.com/Xmerr/WoolyWilly",
+        type: "entertainment",
+        description: "An online SVG based wooly willy"
     },
     {
         title: "This Site",
