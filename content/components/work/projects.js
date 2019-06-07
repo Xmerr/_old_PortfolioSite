@@ -7,13 +7,6 @@ var list = root => [
         description: "A 100% client browser based method to create svg avatars. Still a work in progress"
     },
     {
-        title: "Wooly Willy Online",
-        link: `http://willy.${root}`,
-        repo: "https://github.com/Xmerr/WoolyWilly",
-        type: "entertainment",
-        description: "An online SVG based wooly willy"
-    },
-    {
         title: "This Site",
         link: `http://www.${root}`,
         repo: "https://github.com/Xmerr/PortfolioSite",
